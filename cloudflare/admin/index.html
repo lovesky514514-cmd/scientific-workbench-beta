@@ -1,0 +1,14 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><meta name="referrer" content="no-referrer"><title>发行管理 · Scientific Workbench</title><link rel="stylesheet" href="/admin/style.css"><script defer src="/admin/app.js"></script></head><body>
+<main class="wrap"><header><small>SCIENTIFIC WORKBENCH</small><h1>测试版发行后台</h1><p>发行、审批与签发操作在 Cloudflare 服务端完成。</p></header>
+<section><h2>管理员授权</h2><form id="auth"><label>管理员令牌 <input id="token" type="password" autocomplete="off" required></label><button>连接</button></form><p id="auth-message" role="status"></p></section>
+<div id="management" hidden><section><h2>发行配置</h2><p>默认关闭。实际软件与 SHA-256 验证前不要勾选发布。</p><form id="release">
+<label>版本号<input id="version" maxlength="80"></label><label>HTTPS 下载地址<input id="url" type="url"></label>
+<label>实际安装包 SHA-256<input id="sha256" maxlength="64"></label><label>提取码（选填）<input id="extraction" maxlength="128"></label><label>说明<input id="notes" maxlength="1000"></label>
+<label><input id="applications" type="checkbox">开放资格申请</label><label><input id="claims" type="checkbox">开放邀请码验证</label><label><input id="published" type="checkbox">发布安装包</label><button>保存配置</button></form><p id="release-message" role="status"></p></section>
+<section><h2>人工签发 · 首号 001XX</h2><p>XX 随机生成；邀请码独立生成并仅显示一次。未完成部署前不签发。</p>
+<form id="issue"><label>申请编号（可空）<input id="application-id" type="number" min="1"></label><label>有效天数<input id="days" type="number" min="1" max="365" value="30"></label><button>人工签发</button></form>
+<p id="issue-message" role="status"></p><div id="issued" hidden><strong id="issued-number"></strong><pre id="issued-secret"></pre><button id="copy" type="button">复制邀请码</button></div></section>
+<section><h2>资格申请</h2><div class="scroll"><table><thead><tr><th>编号</th><th>邮箱</th><th>状态</th><th>操作</th></tr></thead><tbody id="app-list"></tbody></table></div></section>
+<section><h2>测试号与撤销</h2><div class="scroll"><table><thead><tr><th>测试号</th><th>到期时间</th><th>状态</th><th>操作</th></tr></thead><tbody id="tester-list"></tbody></table></div></section>
+<section><h2>反馈</h2><div id="feedback"></div><button id="refresh" type="button">刷新</button><button id="cleanup" type="button">清理过期会话</button></section></div>
+<footer>尚未通过生产验收前不得宣称公众开放。管理员令牌仅在当前网页内存保留。</footer></main></body></html>

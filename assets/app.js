@@ -6,6 +6,8 @@
   const root = String(cfg.apiBase || '').trim().replace(/\/+$/, '');
   const secureAPI = /^https:\/\/[^/]+/i.test(root);
   const ready = secureAPI && Boolean(cfg.turnstileSiteKey);
+  let liveApplicationsOpen = false;
+  let liveClaimsOpen = false;
   let sessionToken = '';
   let applyWidget = null;
   let accessWidget = null;
@@ -86,10 +88,31 @@
   $('show-access').addEventListener('click', () => showAccess($('access-area').hidden));
   $('close-access').addEventListener('click', () => showAccess(false));
 
+  async function synchronizeAvailability() {
+    $('apply-submit').disabled = true;
+    $('access-submit').disabled = true;
+    liveApplicationsOpen = false;
+    liveClaimsOpen = false;
+    if (!ready) {
+      $('availability').textContent = '领取与申请暂未开放';
+      notice('apply-message', '申请入口正在准备中，目前不会收集邮箱。');
+      return;
+    }
+    try {
+      const status = await api('/api/status');
+      liveApplicationsOpen = status.applicationsOpen === true;
+      liveClaimsOpen = status.claimsOpen === true;
+      $('availability').textContent = liveClaimsOpen ? '邀请制 · 验证后发放' :
+        (liveApplicationsOpen ? '开放申请 · 人工审核' : '领取与申请暂未开放');
+      $('apply-submit').disabled = !liveApplicationsOpen;
+      $('access-submit').disabled = !liveClaimsOpen;
+      if (!liveApplicationsOpen) notice('apply-message', '申请尚未开放，不会收集邮箱。');
+    } catch {
+      $('availability').textContent = '发行服务暂未开放';
+      notice('apply-message', '申请暂不可用，请稍后查看。');
+    }
+  }
   if (ready) {
-    $('availability').textContent = '邀请制 · 验证后发放';
-    $('apply-submit').disabled = false;
-    $('access-submit').disabled = false;
     const script = document.createElement('script');
     script.src = 'https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit';
     script.async = true;
@@ -100,14 +123,12 @@
       $('availability').textContent = '验证服务暂时不可用';
     };
     document.head.append(script);
-  } else {
-    $('availability').textContent = '领取与申请暂未开放';
-    notice('apply-message', '申请入口正在准备中，目前不会收集邮箱。');
   }
+  void synchronizeAvailability();
 
   $('apply-form').addEventListener('submit', async (event) => {
     event.preventDefault();
-    if (!ready || $('apply-submit').disabled) return;
+    if (!ready || !liveApplicationsOpen || $('apply-submit').disabled) return;
     notice('apply-message', '');
     const email = $('apply-email').value.trim();
     if (!$('apply-form').checkValidity() || !$('apply-consent').checked) {
@@ -134,7 +155,7 @@
 
   $('access-form').addEventListener('submit', async (event) => {
     event.preventDefault();
-    if (!ready || $('access-submit').disabled) return;
+    if (!ready || !liveClaimsOpen || $('access-submit').disabled) return;
     const code = $('invite-code').value.trim();
     const captcha = captchaValue(accessWidget);
     if (!code || !captcha) { notice('access-message', '请输入邀请码并完成人机验证。', true); return; }
