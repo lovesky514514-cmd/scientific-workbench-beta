@@ -143,19 +143,19 @@ async function handle(req,env,path){
    return ok({message:'发行设置已保存（实际开放仍受后端权限控制）'});
   }
   if(method==='POST'&&path==='/api/admin/invitations'){
-   const body=await readBody(req),days=body.expiresDays===undefined?30:Number(body.expiresDays);
-   if(!Number.isInteger(days)||days<1||days>365)stop(400,'有效期必须为 1–365 天');
+   const body=await readBody(req);
+   // Invitation credentials do not auto-expire; revocation remains a server-side decision.
    const applicationId=body.applicationId===undefined||body.applicationId===null||body.applicationId===''?null:Number(body.applicationId);
    if(applicationId!==null&&(!Number.isSafeInteger(applicationId)||applicationId<1))stop(400,'申请编号无效');
    if(applicationId!==null){
     const found=await env.DB.prepare("SELECT id FROM applications WHERE id=? AND status='pending'").bind(applicationId).first();
     if(!found)stop(409,'关联申请不存在或不再等待审核');
    }
-   const issued='SWB-'+randomToken(),digest=await hmac(env.HMAC_PEPPER,'invite',issued),expires=sec()+days*86400,suffix=randomSuffix();
+   const issued='SWB-'+randomToken(),digest=await hmac(env.HMAC_PEPPER,'invite',issued),suffix=randomSuffix();
    let seq;
    try{
     const insert=env.DB.prepare("INSERT INTO invitations(suffix,code_hmac,application_id,expires_at,created_at) SELECT ?,?,?,?,? WHERE (? IS NULL OR EXISTS(SELECT 1 FROM applications WHERE id=? AND status='pending')) RETURNING seq")
-     .bind(suffix,digest,applicationId,expires,sec(),applicationId,applicationId);
+     .bind(suffix,digest,applicationId,null,sec(),applicationId,applicationId);
     if(applicationId===null){seq=(await insert.first())?.seq;}
     else{
      const batch=await env.DB.batch([insert,env.DB.prepare("UPDATE applications SET status='approved',updated_at=? WHERE id=? AND status='pending'").bind(sec(),applicationId)]);
@@ -163,7 +163,7 @@ async function handle(req,env,path){
     }
    }catch(e){if(e instanceof ApiError)throw e;stop(409,'签发失败，可能达到 999 名额或申请状态冲突');}
    if(!seq)stop(503,'数据库未返回签发编号');
-   return ok({testerNumber:testerLabel(seq,suffix),inviteCode:issued,expiresAt:expires,message:'签发成功；邀请码仅显示一次，请私下发送。'});
+   return ok({testerNumber:testerLabel(seq,suffix),inviteCode:issued,expiresAt:null,message:'签发成功（长期有效；可手动撤销）；邀请码仅显示一次，请私下发送。'});
   }
   if(method==='POST'&&path==='/api/admin/invitations/revoke'){
    const id=normalizeTesterNumber((await readBody(req)).testerNumber);if(!id)stop(400,'测试号格式必须为 001SJ');

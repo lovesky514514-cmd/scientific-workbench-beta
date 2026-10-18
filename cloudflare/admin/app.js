@@ -18,7 +18,7 @@ for(const a of r.applications){const tr=document.createElement('tr');[a.id,a.ema
 const action=cell('');if(a.status==='pending'){action.append(btn('关联签发',()=>{$('application-id').value=a.id;$('application-id').focus()}));action.append(btn('拒绝',()=>perform(async()=>{if(confirm('拒绝该申请？'))await api('/api/admin/applications/reject','POST',{id:a.id})}),true));}
 action.append(btn('删除邮箱',()=>perform(async()=>{if(confirm('永久删除此邮箱记录？'))await api('/api/admin/applications/delete','POST',{id:a.id})}),true));tr.append(action);apps.append(tr);}
 const testers=$('tester-list');testers.replaceChildren();
-for(const i of r.invitations){const tr=document.createElement('tr');[i.testerNumber,stamp(i.expires_at),i.revoked_at?'已撤销':'已签发'].forEach(v=>tr.append(cell(v)));
+for(const i of r.invitations){const tr=document.createElement('tr');[i.testerNumber,i.expires_at?'至 '+stamp(i.expires_at):'长期有效',i.revoked_at?'已撤销':'已签发'].forEach(v=>tr.append(cell(v)));
 const action=cell('');if(!i.revoked_at)action.append(btn('撤销',()=>perform(async()=>{if(confirm('撤销 '+i.testerNumber+'？'))await api('/api/admin/invitations/revoke','POST',{testerNumber:i.testerNumber})}),true));tr.append(action);testers.append(tr);}
 $('feedback').replaceChildren();for(const f of r.feedback){const p=document.createElement('p');p.textContent='FB-'+f.id+' #'+f.tester_seq+' '+f.title+' — '+f.details;$('feedback').append(p);}
 $('management').hidden=false;
@@ -30,8 +30,8 @@ version:$('version').value,url:$('url').value,sha256:$('sha256').value,extractio
 applicationsOpen:$('applications').checked,claimsOpen:$('claims').checked,published:$('published').checked});
 show('release-message','已保存');}catch(err){show('release-message',err.message)}});
 $('issue').addEventListener('submit',async e=>{e.preventDefault();show('issue-message','');show('issued-secret','');$('issued').hidden=true;oneTime='';
-try{const input=$('application-id').value.trim();const r=await api('/api/admin/invitations','POST',{applicationId:input?Number(input):null,expiresDays:Number($('days').value)});
-oneTime=r.inviteCode;show('issued-number',r.testerNumber+' · '+stamp(r.expiresAt));show('issued-secret',oneTime);$('issued').hidden=false;show('issue-message','仅显示一次，请私下交付');await refresh();}catch(err){show('issue-message',err.message)}});
+try{const input=$('application-id').value.trim();const r=await api('/api/admin/invitations','POST',{applicationId:input?Number(input):null});
+oneTime=r.inviteCode;show('issued-number',r.testerNumber+' · '+(r.expiresAt?stamp(r.expiresAt):'长期有效'));show('issued-secret',oneTime);$('issued').hidden=false;show('issue-message','仅显示一次，请私下交付');await refresh();}catch(err){show('issue-message',err.message)}});
 $('copy').addEventListener('click',async()=>{if(oneTime)try{await navigator.clipboard.writeText(oneTime)}catch{show('issue-message','复制失败，请手动复制')}});
 $('refresh').addEventListener('click',()=>perform(async()=>{}));
 $('cleanup').addEventListener('click',()=>perform(()=>api('/api/admin/cleanup','POST',{})));
