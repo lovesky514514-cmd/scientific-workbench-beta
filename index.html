@@ -10,8 +10,10 @@
   <title>内测版发放 · Scientific Workbench</title>
   <link rel="icon" href="./assets/brand-icon.png">
   <link rel="stylesheet" href="./assets/style.css">
+  <link rel="stylesheet" href="./assets/markdown-reader.css">
   <script defer src="./config.js"></script>
   <script defer src="./assets/app.js"></script>
+  <script defer src="./assets/help-reader.js"></script>
 </head>
 <body>
   <div class="shell">
@@ -71,14 +73,18 @@
 
       <section class="section section-help" id="help" aria-labelledby="help-title">
         <div class="section-header"><span class="section-index">02</span><h2 id="help-title">使用帮助</h2></div>
-        <details><summary>拿到邀请码后怎么安装？<span aria-hidden="true">+</span></summary><p>点击页面上方「领取测试版」，验证邀请码后查看可用版本、下载链接及 SHA-256；安装前请阅读 <a href="./HELP.md" target="_blank" rel="noopener noreferrer">完整帮助文档 ↗</a>。</p></details>
+        <details><summary>拿到邀请码后怎么安装？<span aria-hidden="true">+</span></summary><p>点击页面上方「领取测试版」，验证邀请码后查看可用版本、下载链接及 SHA-256；安装前请阅读 <button type="button" class="help-open-button" data-open-help>完整帮助文档 ↗</button>。</p></details>
         <details><summary>需要准备什么环境？<span aria-hidden="true">+</span></summary><p>测试版面向 Windows；涉及真实建模的流程需要你自行安装具有适用许可的 COMSOL，部分 AI 功能需要 Ollama 与对应本地模型。请以实际版本的测试说明为准。</p></details>
         <details><summary>遇到错误怎么反馈？<span aria-hidden="true">+</span></summary><p>登录测试者入口后选择「提交测试问题」，提供软件版本、错误代码及最小复现步骤。不要上传许可证、私人模型或完整日志。</p></details>
-        <p class="full-help"><a href="./HELP.md" target="_blank" rel="noopener noreferrer">查看完整帮助文档 <span aria-hidden="true">↗</span></a></p>
+        <p class="full-help"><button type="button" class="help-open-button" data-open-help>查看完整帮助文档 ↗</button></p>
       </section>
       <p class="footnote">本页面仅用于受控测试发放，不代表公开正式版本已经获得上线验收。</p>
     </main>
     <footer class="footer"><span>Scientific Workbench · Closed Beta</span><span>001–999 · 人工审核发放</span></footer>
   </div>
+  <dialog id="help-dialog" class="help-dialog" aria-label="测试版使用帮助">
+    <div class="help-dialog-head"><div><span>DOCUMENTATION</span><h2>使用帮助</h2></div><button id="close-help" type="button" class="help-dialog-close" aria-label="关闭帮助">×</button></div>
+    <div class="help-dialog-body"><nav id="help-toc" class="help-toc" aria-label="帮助章节目录"></nav><div class="help-scroll"><p id="help-load-status" role="status"></p><article id="help-markdown" class="help-markdown"></article></div></div>
+  </dialog>
 </body>
 </html>
