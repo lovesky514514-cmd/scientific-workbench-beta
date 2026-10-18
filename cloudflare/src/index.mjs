@@ -86,7 +86,7 @@ async function tester(req,env){
 // The exact UTF-8 payload bytes are signed; the desktop verifies them offline.
 async function issueOfflineLicense(env,testerNumber){
  const encoded=env.LICENSE_ED25519_PKCS8_B64,keyId=env.LICENSE_KEY_ID;
- if(typeof encoded!=='string'||typeof keyId!=='string'||!keyId||encoded.length>8192)stop(503,'离线激活服务尚未配置');
+ if(typeof encoded!=='string'||typeof keyId!=='string'||keyId.length<1||keyId.length>64||!/^[A-Za-z0-9._-]+$/.test(keyId)||encoded.length>8192)stop(503,'离线激活服务尚未配置');
  let key;
  try{
   const bytes=Uint8Array.from(atob(encoded),c=>c.charCodeAt(0));

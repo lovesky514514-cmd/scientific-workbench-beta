@@ -63,6 +63,8 @@ test('offline license requires a verified session and has a valid Ed25519 signat
  assert.equal(await crypto.subtle.verify('Ed25519',keys.publicKey,signature,altered),false);
  const noKey={...env,LICENSE_ED25519_PKCS8_B64:undefined};
  assert.equal((await worker.fetch(new Request(url,{method:'POST',headers:{Authorization:'Bearer '+session}}),noKey)).status,503);
+ const badKeyId={...env,LICENSE_KEY_ID:'invalid/key-id'};
+ assert.equal((await worker.fetch(new Request(url,{method:'POST',headers:{Authorization:'Bearer '+session}}),badKeyId)).status,503);
 });
 
 test('missing Turnstile cannot create a tester session or offline license',async()=>{
