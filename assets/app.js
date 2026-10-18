@@ -73,6 +73,7 @@
     $('feedback-area').hidden = true;
     $('toggle-feedback').setAttribute('aria-expanded', 'false');
     $('feedback-submit').disabled = true;
+    $('license-download').disabled = true;
   }
 
   async function confirmSession() {
@@ -173,6 +174,7 @@
       $('access-form').hidden = true;
       $('tester-panel').hidden = false;
       $('feedback-submit').disabled = false;
+      $('license-download').disabled = false;
       const release = me.release;
       $('release-version').textContent = release?.version || '暂未开放';
       $('release-hash').textContent = release?.sha256 ? 'SHA-256 · ' + release.sha256 : '';
@@ -200,6 +202,25 @@
   $('copy-extraction').addEventListener('click', async () => {
     try { await navigator.clipboard.writeText($('release-extraction-value').textContent); }
     catch { /* no clipboard permission; user may select text manually */ }
+  });
+
+  $('license-download').addEventListener('click', async () => {
+    if (!sessionToken) return;
+    $('license-download').disabled = true;
+    notice('license-message', '正在签发许可证…');
+    try {
+      const result = await api('/api/activation/license', { method: 'POST', token: sessionToken });
+      // Download only the signed artifact. Neither invitation nor short-lived
+      // session token is included in the file, URL, or visible error message.
+      const blob = new Blob([JSON.stringify(result.license, null, 2)], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+      const anchor = document.createElement('a');
+      anchor.href = url; anchor.download = 'scientific-workbench-beta.swblicense';
+      document.body.append(anchor); anchor.click(); anchor.remove();
+      setTimeout(() => URL.revokeObjectURL(url), 60000);
+      notice('license-message', '许可证已下载。请回到桌面软件导入。');
+    } catch (error) { notice('license-message', error.message, true); }
+    finally { if (sessionToken) $('license-download').disabled = false; }
   });
 
   $('toggle-feedback').addEventListener('click', () => {
