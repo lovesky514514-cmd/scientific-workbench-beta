@@ -1,0 +1,3 @@
+import test from 'node:test';import assert from 'node:assert/strict';import worker from '../src/index.mjs';
+test('unconfigured Worker remains closed',async()=>{const r=await worker.fetch(new Request('https://example.workers.dev/api/status'),{});assert.equal(r.status,503);assert.equal((await r.json()).ok,false)});
+test('CORS approval',async()=>{const a=await worker.fetch(new Request('https://example.workers.dev/api/status',{method:'OPTIONS',headers:{Origin:'https://lovesky514514-cmd.github.io'}}),{});assert.equal(a.status,204);const b=await worker.fetch(new Request('https://example.workers.dev/api/status',{method:'OPTIONS',headers:{Origin:'https://evil.example'}}),{});assert.equal(b.status,403);});
