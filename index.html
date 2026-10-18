@@ -3,124 +3,82 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#f5f2eb">
-  <meta name="description" content="COMSOL Scientific Workbench：本地优先、证据驱动的 AI 科学仿真工作台。受邀测试、反馈与版本更新。">
+  <meta name="theme-color" content="#f6f3ed">
+  <meta name="description" content="COMSOL Scientific Workbench 邀请制测试版发放、资格申请与安装帮助。">
   <meta name="referrer" content="strict-origin-when-cross-origin">
   <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self' https://challenges.cloudflare.com; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src https:; frame-src https://challenges.cloudflare.com; base-uri 'none'; object-src 'none'; form-action 'self'">
-  <title>Scientific Workbench — Closed Beta</title>
-  <link rel="icon" href="assets/brand-icon.png">
-  <link rel="stylesheet" href="assets/style.css">
-  <script defer src="config.js"></script>
-  <script defer src="assets/app.js"></script>
+  <title>内测版发放 · Scientific Workbench</title>
+  <link rel="icon" href="./assets/brand-icon.png">
+  <link rel="stylesheet" href="./assets/style.css">
+  <script defer src="./config.js"></script>
+  <script defer src="./assets/app.js"></script>
 </head>
 <body>
-  <div class="app-shell">
-    <header class="masthead">
-      <a class="brand" href="#home" aria-label="Scientific Workbench 首页">
-        <img src="assets/brand-icon.png" alt="Scientific Workbench 图标" width="36" height="36">
-        <span class="brand-name">Scientific <b>Workbench</b><small>RESEARCH PREVIEW</small></span>
-      </a>
-      <nav class="topnav" aria-label="主要导航">
-        <a href="#home" data-nav="home">概览</a>
-        <a href="#about" data-nav="about">研究理念</a>
-        <a href="#apply" data-nav="apply">申请内测</a>
-        <a href="#access" data-nav="access">测试者入口</a>
-      </nav>
-      <a href="#apply" class="nav-cta">申请资格 <span aria-hidden="true">↗</span></a>
-      <button class="menu-toggle" type="button" id="menu-toggle" aria-label="打开菜单" aria-expanded="false">☰</button>
+  <div class="shell">
+    <header class="header">
+      <a class="brand" href="./" aria-label="Scientific Workbench 首页"><img src="./assets/brand-icon.png" width="34" height="34" alt=""><span>Scientific Workbench</span></a>
+      <a class="quiet-link" href="https://github.com/lovesky514514-cmd/scientific-workbench-beta" target="_blank" rel="noopener noreferrer">GitHub <span aria-hidden="true">↗</span></a>
     </header>
-
-    <main>
-      <section class="view" id="view-home" data-view="home">
-        <section class="hero container">
-          <div class="hero-copy">
-            <div class="eyebrow"><span class="signal-dot"></span> SCIENTIFIC WORKBENCH · CLOSED BETA</div>
-            <h1>让科学建模，<br>变得更<span class="serif-word">从容。</span></h1>
-            <p class="hero-lede">从自然语言到真实 COMSOL 模型。让智能体协助建模，让物理读回与可追溯证据决定结论。</p>
-            <div class="hero-actions"><a class="btn btn-primary" href="#apply">申请内测资格 <span>↗</span></a><a class="btn btn-soft" href="#about">了解工作方式 <span>→</span></a></div>
-            <p class="hero-note"><span class="mini-square"></span> 仅限邀请测试 · 人工发放编号 001–999 · 不是公众正式版</p>
-          </div>
-          <div class="hero-stage" aria-label="二维热传导模型展示示意，不代表真实求解结果">
-            <div class="stage-heading"><span class="stage-mark">●</span> MODEL SPACE <span class="stage-heading-right">EXAMPLE / NOT SCIENTIFIC DATA</span></div>
-            <div class="stage-field">
-              <div class="stage-top-label">HEAT TRANSFER <span>·</span> STATIONARY</div>
-              <svg class="model-svg" viewBox="0 0 620 320" role="img" aria-label="二维板材左右边界温度示意图">
-                <defs>
-                  <linearGradient id="heatgrad" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#e9c76b"/><stop offset="19%" stop-color="#9abe82"/><stop offset="45%" stop-color="#45919b"/><stop offset="72%" stop-color="#344a7a"/><stop offset="100%" stop-color="#382b59"/></linearGradient>
-                  <pattern id="grid" width="26" height="26" patternUnits="userSpaceOnUse"><path d="M 26 0 L 0 0 0 26" fill="none" stroke="#819795" stroke-opacity=".10" stroke-width=".8"/></pattern>
-                </defs>
-                <rect width="620" height="320" fill="url(#grid)"/>
-                <g font-family="Arial, sans-serif" font-size="12" fill="#96b0b0"><text x="102" y="57">Boundary 1</text><text x="450" y="57">Boundary 2</text></g>
-                <rect x="104" y="90" width="412" height="148" fill="url(#heatgrad)" stroke="#b5cbc5" stroke-width="1.3" rx="2"/>
-                <rect x="102" y="88" width="4" height="152" fill="#edca7a"/><rect x="514" y="88" width="4" height="152" fill="#9ca6ce"/>
-                <g font-family="Arial, sans-serif" fill="#e5eeec" font-size="14"><text x="95" y="79" text-anchor="end">350 K</text><text x="523" y="79">293 K</text><text x="308" y="171" font-size="12" fill="#f3f6f2" text-anchor="middle">Domain 1</text></g>
-                <g stroke="#819b9b" stroke-width="1"><path d="M104 249v5M516 249v5M104 253h412"/></g>
-                <text x="310" y="276" font-family="Arial" font-size="11" fill="#9eaaa8" text-anchor="middle">10 mm · geometry preview</text>
-              </svg>
-              <div class="visual-footnote"><span>GEOMETRY · PHYSICS · BOUNDARIES</span><span>MODEL-FIRST WORKFLOW <i>↗</i></span></div>
-            </div>
-            <div class="stage-bottom"><span class="tiny-green"></span> EVIDENCE-AWARE BY DESIGN <span class="stage-bottom-end">01 / 03</span></div>
-          </div>
-        </section>
-
-        <section class="three-points container">
-          <div class="section-index">THE APPROACH <span>01 — 03</span></div>
-          <div class="point-grid">
-            <article class="point"><span class="point-no">01</span><div class="point-art"><svg viewBox="0 0 160 75" aria-hidden="true"><rect x="4" y="8" width="151" height="57" rx="10" stroke="#cdd2ca" fill="#fffdf8"/><path d="M22 27h69M22 39h99" stroke="#b2bbb0" stroke-width="3" stroke-linecap="round"/><path d="M24 51h55" stroke="#b2bbb0" stroke-width="3" stroke-linecap="round"/><rect x="111" y="44" width="29" height="14" rx="7" fill="#2e7770"/><path d="m123 51 6 0m-2-3 3 3-3 3" stroke="#fff" stroke-width="1.5" fill="none"/></svg></div><h3>描述你的实验</h3><p>从研究目标出发，生成可审核的仿真计划。材料、边界条件和假设清楚呈现。</p></article>
-            <article class="point"><span class="point-no">02</span><div class="point-art"><svg viewBox="0 0 160 75" aria-hidden="true"><rect x="4" y="8" width="152" height="58" rx="6" fill="#1b3338"/><rect x="38" y="21" width="85" height="33" fill="#325e62" stroke="#89aba5"/><path d="M38 21v33" stroke="#e3b769" stroke-width="4"/><path d="M17 36h18m91 0h17" stroke="#819995" stroke-dasharray="3 3"/></svg></div><h3>看见真实模型</h3><p>在 COMSOL 中构建、读回和修正模型；人始终可以审查关键科学条件。</p></article>
-            <article class="point"><span class="point-no">03</span><div class="point-art"><svg viewBox="0 0 160 75" aria-hidden="true"><rect x="4" y="9" width="151" height="56" rx="6" fill="#fffdf8" stroke="#ccd3cc"/><rect x="17" y="22" width="94" height="28" rx="2" fill="url(#miniheat)"/><defs><linearGradient id="miniheat"><stop stop-color="#ecd67d"/><stop offset=".5" stop-color="#65a28e"/><stop offset="1" stop-color="#39366f"/></linearGradient></defs><path d="M121 51V22h12" stroke="#aab4a9" fill="none"/><path d="M121 51l7-8 6-11 8-5" fill="none" stroke="#3f837c" stroke-width="2"/></svg></div><h3>用证据判断</h3><p>计算完成不等于科学正确。保留数值检查、读回与结果产物的证据链。</p></article>
-          </div>
-        </section>
-        <section class="beta-band container"><div><div class="eyebrow">PRIVATE BETA / LIMITED SEATS</div><h2>先邀请一小群人，<br>把细节一起打磨好。</h2><p>首批采用人工审核与编号发放，不收集姓名、手机号或许可证文件。</p></div><a class="btn btn-inverse" href="#apply">申请测试席位 <span>↗</span></a></section>
+    <main class="main">
+      <section class="intro" aria-labelledby="page-title">
+        <p class="eyebrow"><span class="dot"></span> INVITATION-ONLY TESTING</p>
+        <h1 id="page-title">测试版发放</h1>
+        <p class="intro-text">COMSOL Scientific Workbench 邀请制测试。获得邀请码后即可查看当前开放的安装包；尚未面向公众正式发行。</p>
+        <div class="intro-actions"><button class="button button-primary" id="show-access" type="button" aria-controls="access-area" aria-expanded="false">领取测试版 <span aria-hidden="true">→</span></button><span id="availability" class="availability" role="status">查询发放状态中</span></div>
       </section>
 
-      <section class="view" id="view-about" data-view="about" hidden>
-        <div class="page-heading container"><div class="eyebrow">OUR PRINCIPLES / 科学可信性</div><h1>智能生成，<br><em>由证据说话。</em></h1><p>一个本地优先的科学仿真工作空间。我们尝试减少重复操作，但不把模型的自我描述当作真实物理状态。</p></div>
-        <div class="about-stack container">
-          <article class="about-row"><span>01</span><div><h2>Plan first, then build.</h2><p>自然语言先转化为结构化 Scientific Plan，供用户查看几何、材料、Physics 与边界条件。只有确认后才能进入实际执行。</p></div><span>SCIENTIFIC PLAN</span></article>
-          <article class="about-row"><span>02</span><div><h2>Readback, not assumptions.</h2><p>通过真实 COMSOL 读回，检查模型状态、数值网格、求解与结果；没有读回不声称已经完成验证。</p></div><span>MODEL STATE</span></article>
-          <article class="about-row"><span>03</span><div><h2>Evidence earns trust.</h2><p>命令成功、模型状态已验证、科学验证通过、证据合同通过是四个不同的检查点。人工审批不自动赋予科学认证。</p></div><span>FOUR GATES</span></article>
+      <section id="access-area" class="access-area" aria-labelledby="access-heading" hidden>
+        <div class="section-top"><h2 id="access-heading">测试者入口</h2><button id="close-access" class="close-button" type="button" aria-label="收起测试者入口">×</button></div>
+        <p class="hint">由负责人单独提供邀请码。三位测试编号（001–999）不是登录密码。</p>
+        <form id="access-form" novalidate>
+          <label for="invite-code">邀请码</label>
+          <div class="field-action"><input id="invite-code" type="password" name="invite" autocomplete="off" maxlength="128" spellcheck="false" placeholder="输入收到的邀请码" required><button class="button button-primary" id="access-submit" type="submit" disabled>验证邀请码</button></div>
+          <div id="access-turnstile" class="captcha-slot"></div>
+          <p class="message" id="access-message" role="status" aria-live="polite"></p>
+        </form>
+        <div id="tester-panel" hidden>
+          <p class="success-line">已验证 · <strong id="tester-number"></strong></p>
+          <div class="release-info"><span class="muted">测试版本</span><strong id="release-version">下载尚未开放</strong></div>
+          <p class="hash" id="release-hash"></p>
+          <a id="download-link" class="button button-primary" href="#" target="_blank" rel="noopener noreferrer" hidden>前往受控下载 <span aria-hidden="true">↗</span></a>
+          <div id="release-extraction" class="extraction" hidden><span>提取码</span><code id="release-extraction-value"></code><button id="copy-extraction" type="button" class="text-button">复制</button></div>
+          <p id="release-note" class="hint"></p>
+          <button class="text-button feedback-toggle" id="toggle-feedback" type="button" aria-expanded="false" aria-controls="feedback-area">提交测试问题 ↓</button>
+          <div id="feedback-area" hidden>
+            <form id="feedback-form">
+              <div class="two-col"><div><label for="feedback-kind">问题类型</label><select id="feedback-kind"><option value="execution">建模/求解</option><option value="science">科学结果</option><option value="ui">安装/界面</option><option value="suggestion">建议</option></select></div><div><label for="feedback-severity">影响程度</label><select id="feedback-severity"><option value="blocked">无法继续</option><option value="partial">部分功能异常</option><option value="minor">轻微问题</option></select></div></div>
+              <label for="feedback-title">简短标题</label><input id="feedback-title" maxlength="120" required placeholder="例如：点击 Solve 后无响应">
+              <label for="feedback-details">发生了什么？如何复现？</label><textarea id="feedback-details" rows="3" maxlength="4000" required placeholder="请只提供复现步骤，不要粘贴完整日志、许可证或私有文件路径。"></textarea>
+              <div class="two-col"><div><label for="feedback-code">错误代码（选填）</label><input id="feedback-code" maxlength="80" placeholder="E_RUNTIME_..."></div><div><label for="feedback-version">软件版本（选填）</label><input id="feedback-version" maxlength="80" placeholder="RC5.1"></div></div>
+              <button class="button button-secondary" type="submit" id="feedback-submit">提交反馈</button><p class="message" id="feedback-message" role="status" aria-live="polite"></p>
+            </form>
+          </div>
         </div>
-        <div class="note-strip container"><span class="signal-dot"></span><p>当前为邀请制研究预览版本，能力受 COMSOL 环境、许可证、物理接口与当前安装包验证范围限制。</p></div>
       </section>
 
-      <section class="view" id="view-apply" data-view="apply" hidden>
-        <div class="page-heading container compact"><div class="eyebrow">APPLICATION / BETA PROGRAM</div><h1>申请一个<span class="serif-word">测试席位。</span></h1><p>只留下联系邮箱，我们会人工审核申请并私下发送邀请码。申请不保证获得席位。</p></div>
-        <div class="form-layout container"><section class="form-card"><div class="form-card-head"><span class="step-round">01</span><div><h2>申请内测资格</h2><p>每人只需要提交一次申请。</p></div></div>
-          <form id="apply-form" novalidate>
-            <label for="apply-email">联系邮箱 <span class="required">*</span></label><input id="apply-email" name="email" type="email" autocomplete="email" maxlength="254" required placeholder="you@example.com">
-            <label for="apply-interest">你主要想测试什么？ <span class="muted">可选</span></label><select id="apply-interest" name="interest"><option value="general">日常使用与交互体验</option><option value="heat">Heat / 热传导建模</option><option value="tds">TDS / 传质</option><option value="other">其他 Physics / 环境兼容性</option></select>
-            <div class="turnstile-box" id="apply-turnstile"><span>人机验证将在 API 配置完成后加载</span></div>
-            <label class="checkline"><input type="checkbox" id="apply-consent" required><span>我同意仅为内测邀请及问题处理保存所提供的邮箱，并已阅读<a href="#privacy">隐私说明</a>。</span></label>
-            <button type="submit" class="btn btn-primary wide" id="apply-submit" disabled>提交申请 <span>↗</span></button>
-            <div role="status" class="form-message" id="apply-message" aria-live="polite"></div>
-          </form>
-        </section><aside class="form-aside"><span class="aside-overline">HOW IT WORKS</span><div class="sequence-item"><span>01</span><div><b>提交邮箱</b><p>不需要姓名、手机号或学校信息。</p></div></div><div class="sequence-item"><span>02</span><div><b>人工审核</b><p>只由项目负责人批准申请、分配席位。</p></div></div><div class="sequence-item"><span>03</span><div><b>收到邀请码</b><p>得到三位测试编号及一枚独立邀请码。</p></div></div><div class="sequence-item"><span>04</span><div><b>访问测试入口</b><p>获取受控版本链接并提交问题反馈。</p></div></div><div class="aside-note">申请邮箱不是公开资料；管理员不会在 GitHub 的公开 Issue 中发布原始申请。</div></aside></div>
+      <section class="section" id="apply" aria-labelledby="apply-title">
+        <div class="section-header"><span class="section-index">01</span><h2 id="apply-title">申请测试资格</h2></div>
+        <p class="section-description">还没有邀请码？留下一个联系邮箱，等待人工审核。不会自动分配编号，也不保证获得名额。</p>
+        <div class="steps"><span>提交邮箱</span><span aria-hidden="true">→</span><span>人工审核</span><span aria-hidden="true">→</span><span>私下发送编号与邀请码</span></div>
+        <form id="apply-form" class="apply-form" novalidate>
+          <label for="apply-email">联系邮箱</label>
+          <div class="field-action"><input id="apply-email" type="email" name="email" autocomplete="email" maxlength="254" placeholder="you@example.com" required><button class="button button-primary" id="apply-submit" type="submit" disabled>提交申请</button></div>
+          <div id="apply-turnstile" class="captcha-slot"></div>
+          <label class="check"><input id="apply-consent" type="checkbox" required><span>我同意使用此邮箱接收内测资格审核结果。不会在公开仓库展示申请资料。</span></label>
+          <p class="message" id="apply-message" role="status" aria-live="polite"></p>
+        </form>
       </section>
 
-      <section class="view" id="view-access" data-view="access" hidden>
-        <div class="page-heading container compact"><div class="eyebrow">TESTER ACCESS / INVITATION ONLY</div><h1>欢迎回来，<span class="serif-word">研究伙伴。</span></h1><p>已获得邀请码的测试者可在这里验证身份，查看受控下载入口与提交反馈。</p></div>
-        <div class="form-layout container"><section class="form-card"><div class="form-card-head"><span class="step-round">↗</span><div><h2>验证内测资格</h2><p>编号由系统自动分配，邀请码由管理员单独发送。</p></div></div>
-          <form id="access-form" novalidate><label for="invite-code">邀请码</label><input id="invite-code" type="text" required spellcheck="false" autocapitalize="off" autocomplete="off" placeholder="SWB-••••••••••••••••••••••••"><div class="turnstile-box" id="access-turnstile"><span>验证组件将在 API 配置完成后加载</span></div><button type="submit" class="btn btn-primary wide" id="access-submit" disabled>进入测试空间 <span>→</span></button><div role="status" id="access-message" class="form-message"></div></form>
-          <div class="tester-panel" id="tester-panel" hidden><div class="tester-head"><div><span class="aside-overline">ACTIVE TESTER</span><div class="tester-number" id="tester-number">#001</div></div><span class="status-pill">已激活</span></div><div class="release-detail"><span>当前提供的候选版本</span><strong id="release-version">待公布</strong><span class="hash-note" id="release-hash"></span></div><a id="download-link" class="btn btn-primary wide" href="#" target="_blank" rel="noopener noreferrer" hidden>访问加密下载链接 ↗</a><div class="extraction" id="release-extraction" hidden>提取码：<strong id="release-extraction-value"></strong> <button type="button" class="text-button" id="copy-extraction">复制</button></div><p class="small-note" id="release-note"></p><button type="button" class="btn btn-soft wide" id="to-feedback">提交问题反馈 →</button></div>
-        </section><aside class="form-aside"><span class="aside-overline">TESTER NOTES</span><div class="sequence-item"><span>001</span><div><b>三位编号</b><p>你会得到 001–999 中唯一的测试编号。</p></div></div><div class="sequence-item"><span>SEC</span><div><b>邀请码不公开</b><p>不要将邀请码贴在 GitHub Issue、截图或公共群聊里。</p></div></div><div class="sequence-item"><span>QA</span><div><b>科学验证有边界</b><p>仅在已有真实证据的任务上展示 Verified；无法确认的功能应显示未验证。</p></div></div></aside></div>
+      <section class="section section-help" id="help" aria-labelledby="help-title">
+        <div class="section-header"><span class="section-index">02</span><h2 id="help-title">使用帮助</h2></div>
+        <details><summary>拿到邀请码后怎么安装？<span aria-hidden="true">+</span></summary><p>点击页面上方「领取测试版」，验证邀请码后查看可用版本、下载链接及 SHA-256；安装前请阅读 <a href="./HELP.md" target="_blank" rel="noopener noreferrer">完整帮助文档 ↗</a>。</p></details>
+        <details><summary>需要准备什么环境？<span aria-hidden="true">+</span></summary><p>测试版面向 Windows；涉及真实建模的流程需要你自行安装具有适用许可的 COMSOL，部分 AI 功能需要 Ollama 与对应本地模型。请以实际版本的测试说明为准。</p></details>
+        <details><summary>遇到错误怎么反馈？<span aria-hidden="true">+</span></summary><p>登录测试者入口后选择「提交测试问题」，提供软件版本、错误代码及最小复现步骤。不要上传许可证、私人模型或完整日志。</p></details>
+        <p class="full-help"><a href="./HELP.md" target="_blank" rel="noopener noreferrer">查看完整帮助文档 <span aria-hidden="true">↗</span></a></p>
       </section>
-
-      <section class="view" id="view-feedback" data-view="feedback" hidden>
-        <div class="page-heading container compact"><div class="eyebrow">BUG REPORTS / QUALITY PROGRAM</div><h1>告诉我们<span class="serif-word">哪里不对。</span></h1><p>只收集最小必要信息：错误代码、复现步骤和你主动填写的环境信息。默认不上传日志、模型或截图。</p></div>
-        <div class="form-layout container"><section class="form-card"><div class="form-card-head"><span class="step-round">!</span><div><h2>提交反馈</h2><p id="feedback-tester-label">请先在「测试者入口」验证邀请码。</p></div></div><form id="feedback-form">
-          <label for="feedback-kind">问题类型</label><select id="feedback-kind" required><option value="startup">启动 / 安装</option><option value="execution">建模 / 求解</option><option value="science">科学结果 / 物理条件</option><option value="ui">界面与交互</option><option value="suggestion">产品建议</option></select>
-          <label for="feedback-severity">影响程度</label><select id="feedback-severity"><option value="blocked">无法继续操作</option><option value="partial">部分功能异常</option><option value="minor">轻微问题 / 建议</option></select>
-          <label for="feedback-title">一句话描述 <span class="required">*</span></label><input id="feedback-title" required maxlength="120" placeholder="例如：点击 Solve 后模型停留在 Building">
-          <label for="feedback-details">复现过程 <span class="required">*</span></label><textarea id="feedback-details" required minlength="10" maxlength="2500" rows="5" placeholder="1. 我做了什么…\n2. 预期发生…\n3. 实际发生…"></textarea>
-          <div class="field-row"><div><label for="feedback-code">错误代码 <span class="muted">可选</span></label><input id="feedback-code" maxlength="64" placeholder="例如 E_RUNTIME_042"></div><div><label for="feedback-version">应用版本 <span class="muted">可选</span></label><input id="feedback-version" maxlength="60" placeholder="例如 rc5.1"></div></div>
-          <div class="privacy-alert"><span>◈</span><p>提交前请删除电脑用户名、绝对路径、邮箱、许可证、模型内容等信息。平台不需要这些数据。</p></div>
-          <button type="submit" class="btn btn-primary wide" id="feedback-submit" disabled>提交反馈 <span>↗</span></button><div class="form-message" role="status" id="feedback-message"></div>
-        </form></section><aside class="form-aside"><span class="aside-overline">MINIMUM DATA</span><div class="sequence-item"><span>01</span><div><b>可复现步骤</b><p>比完整日志更有用的是清楚、具体的操作步骤。</p></div></div><div class="sequence-item"><span>02</span><div><b>内部错误代码</b><p>尽量提供应用界面显示的错误码，不要复制堆栈。</p></div></div><div class="sequence-item"><span>03</span><div><b>反馈回执</b><p>提交成功后会获得 BUG-****** 编号，供后续查询。</p></div></div></aside></div>
-      </section>
-      <section class="view" id="view-privacy" data-view="privacy" hidden><div class="page-heading container compact"><div class="eyebrow">PRIVACY / MINIMAL BY DESIGN</div><h1>只留下<span class="serif-word">必要信息。</span></h1><p>这是一份供内测使用的简明隐私说明，正式对外开放前应补充运营主体与联系渠道。</p></div><div class="privacy-doc container"><h2>我们收集什么？</h2><p>陌生人申请时收集其主动提交的邮箱及测试兴趣；批准后分配三位测试编号。受邀者提交反馈时收集问题分类、描述、错误代码与可选客户端版本。我们不会要求姓名、手机号、COMSOL 许可证、模型文件或完整日志。</p><h2>为什么要收集？</h2><p>邮箱仅用于人工发送邀请码和内测相关通知，测试编号用于区分反馈来源，问题内容用于定位软件错误。</p><h2>如何保存、访问及删除？</h2><p>申请与反馈保存在私有 Cloudflare D1 数据库中，仅受限管理员可查看。申请邮箱和反馈正文默认在创建满 90 天后由后台定时清理；测试编号及撤销状态保留用于席位防重复发放。用户可通过项目发布的联系邮箱申请删除数据；部署时必须配置实际联系地址。</p><h2>还有哪些技术数据？</h2><p>Cloudflare 与 GitHub 作为托管服务提供商可能处理网站请求 IP 等技术信息；我们不将原始访问 IP 写入申请和反馈记录。短期防滥用标识如启用，仅以不可逆每日散列储存并清理。</p><h2>注意事项</h2><p>反馈文本脱敏只是尽力过滤，不保证任何粘贴日志都能彻底清除敏感信息；请先自行删去敏感部分。不收集直接身份信息不等于绝对匿名。测试邀请码和反馈编号均属于假名化标识。请不要提交敏感模型、组织内部数据或私人路径。</p></div></section>
+      <p class="footnote">本页面仅用于受控测试发放，不代表公开正式版本已经获得上线验收。</p>
     </main>
-    <footer class="footer"><div class="container foot-grid"><div class="footer-brand"><img src="assets/brand-icon.png" width="30" height="30" alt=""><span>Scientific Workbench<br><small>Make science accountable.</small></span></div><div class="footer-links"><a href="#about">理念</a><a href="#apply">申请</a><a href="#access">测试入口</a><a href="#privacy">隐私</a></div><div class="footer-end">© 2026 Scientific Workbench · Invite-only preview<br><span>需要 COMSOL 及其有效许可；部分工作流依赖本地 Ollama / 模型。</span></div></div></footer>
+    <footer class="footer"><span>Scientific Workbench · Closed Beta</span><span>001–999 · 人工审核发放</span></footer>
   </div>
 </body>
 </html>
