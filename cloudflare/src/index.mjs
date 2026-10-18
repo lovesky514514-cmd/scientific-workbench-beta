@@ -81,6 +81,25 @@ async function tester(req,env){
  const settings=await releaseSettings(env);if(settings.claims_open!==1)stop(403,'领取暂未开放');
  return{...row,settings};
 }
+// A one-hour tester session proves the browser already completed Turnstile and
+// invitation verification. Only the Worker sees the PKCS#8 signing Secret.
+// The exact UTF-8 payload bytes are signed; the desktop verifies them offline.
+async function issueOfflineLicense(env,testerNumber){
+ const encoded=env.LICENSE_ED25519_PKCS8_B64,keyId=env.LICENSE_KEY_ID;
+ if(typeof encoded!=='string'||typeof keyId!=='string'||keyId.length<1||keyId.length>64||!/^[A-Za-z0-9._-]+$/.test(keyId)||encoded.length>8192)stop(503,'离线激活服务尚未配置');
+ let key;
+ try{
+  const bytes=Uint8Array.from(atob(encoded),c=>c.charCodeAt(0));
+  key=await crypto.subtle.importKey('pkcs8',bytes,{name:'Ed25519'},false,['sign']);
+ }catch{stop(503,'离线激活服务尚未配置')}
+ const payload=new TextEncoder().encode(JSON.stringify({
+  schemaVersion:1,issuer:'scientific-workbench-beta-api',audience:'comsol-scientific-workbench-beta',
+  testerNumber,licenseId:crypto.randomUUID(),issuedAt:new Date().toISOString().replace(/\.\d{3}Z$/,'Z'),scope:'desktop-beta'
+ }));
+ const signature=new Uint8Array(await crypto.subtle.sign('Ed25519',key,payload));
+ const b64url=bytes=>btoa(String.fromCharCode(...bytes)).replace(/\+/g,'-').replace(/\//g,'_').replace(/=+$/,'');
+ return{format:'swb-beta-license-v1',keyId,payload:b64url(payload),signature:b64url(signature)};
+}
 async function handle(req,env,path){
  const method=req.method.toUpperCase();requireOrigin(req,env);
  if(!env.DB||!env.HMAC_PEPPER||env.HMAC_PEPPER.length<32)stop(503,'服务尚未配置');
@@ -117,6 +136,11 @@ async function handle(req,env,path){
   const release=s.published===1&&s.download_url&&s.sha256?{
    version:s.version,url:s.download_url,sha256:s.sha256,extractionCode:s.extraction_code,notes:s.notes}:null;
   return ok({testerNumber:testerLabel(seq,suffix),release});
+ }
+ if(method==='POST'&&path==='/api/activation/license'){
+  await rate(req,env,'offline-license',5,3600);
+  const {seq,suffix}=await tester(req,env);
+  return ok({license:await issueOfflineLicense(env,testerLabel(seq,suffix))});
  }
  if(method==='POST'&&path==='/api/feedback'){
   await rate(req,env,'feedback',15,3600);const {seq}=await tester(req,env);
