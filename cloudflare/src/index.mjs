@@ -200,7 +200,7 @@ export default{
   if(['/admin','/admin/','/admin/app.js','/admin/style.css'].includes(path)){
    if(request.method!=='GET')return new Response('Method Not Allowed',{status:405,headers:baseHeaders()});
    if(!env.ASSETS)return new Response('Assets unavailable',{status:503,headers:baseHeaders()});
-   const url=new URL(request.url);url.pathname=path==='/admin'||path==='/admin/'?'/index.html':'/'+path.split('/').pop();
+   const url=new URL(request.url);url.pathname=path==='/admin'||path==='/admin/'?'/':'/'+path.split('/').pop();
    const asset=await env.ASSETS.fetch(new Request(url,request)),h=new Headers(asset.headers);
    for(const [k,v] of Object.entries(baseHeaders()))h.set(k,v);
    h.set('Content-Security-Policy',"default-src 'none'; script-src 'self'; style-src 'self'; connect-src 'self'; img-src 'self'; base-uri 'none'; form-action 'none'; frame-ancestors 'none'");
