@@ -1,9 +1,0 @@
-{
- "name":"scientific-workbench-beta-api",
- "main":"src/index.mjs",
- "compatibility_date":"2026-10-16",
- "workers_dev":true,
- "assets":{"directory":"./admin","binding":"ASSETS","run_worker_first":true},
- "vars":{"PUBLIC_ORIGIN":"https://lovesky514514-cmd.github.io","TURNSTILE_HOSTNAMES":"lovesky514514-cmd.github.io"},
- "d1_databases":[{"binding":"DB","database_name":"scientific-workbench-beta","database_id":"89c81a1f-1f8c-46ae-b7bc-78fc5a17a3cf","migrations_dir":"migrations"}]
-}

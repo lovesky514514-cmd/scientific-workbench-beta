@@ -1,90 +1,9 @@
-<!doctype html>
-<html lang="zh-CN">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#f6f3ed">
-  <meta name="description" content="COMSOL Scientific Workbench 邀请制测试版发放、资格申请与安装帮助。">
-  <meta name="referrer" content="strict-origin-when-cross-origin">
-  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self' https://challenges.cloudflare.com; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src https:; frame-src https://challenges.cloudflare.com; base-uri 'none'; object-src 'none'; form-action 'self'">
-  <title>内测版发放 · Scientific Workbench</title>
-  <link rel="icon" href="./assets/brand-icon.png">
-  <link rel="stylesheet" href="./assets/style.css">
-  <link rel="stylesheet" href="./assets/markdown-reader.css">
-  <script defer src="./config.js"></script>
-  <script defer src="./assets/app.js"></script>
-  <script defer src="./assets/help-reader.js"></script>
-</head>
-<body>
-  <div class="shell">
-    <header class="header">
-      <a class="brand" href="./" aria-label="Scientific Workbench 首页"><img src="./assets/brand-icon.png" width="34" height="34" alt=""><span>Scientific Workbench</span></a>
-      <a class="quiet-link" href="https://github.com/lovesky514514-cmd/scientific-workbench-beta" target="_blank" rel="noopener noreferrer">GitHub <span aria-hidden="true">↗</span></a>
-    </header>
-    <main class="main">
-      <section class="intro" aria-labelledby="page-title">
-        <p class="eyebrow"><span class="dot"></span> INVITATION-ONLY TESTING</p>
-        <h1 id="page-title">测试版发放</h1>
-        <p class="intro-text">COMSOL Scientific Workbench 邀请制测试。获得邀请码后即可查看当前开放的安装包；尚未面向公众正式发行。</p>
-        <div class="intro-actions"><button class="button button-primary" id="show-access" type="button" aria-controls="access-area" aria-expanded="false">领取测试版 <span aria-hidden="true">→</span></button><span id="availability" class="availability" role="status">查询发放状态中</span></div>
-      </section>
-
-      <section id="access-area" class="access-area" aria-labelledby="access-heading" hidden>
-        <div class="section-top"><h2 id="access-heading">测试者入口</h2><button id="close-access" class="close-button" type="button" aria-label="收起测试者入口">×</button></div>
-        <p class="hint">由负责人单独提供邀请码。三位测试编号（001–999）不是登录密码。</p>
-        <form id="access-form" novalidate>
-          <label for="invite-code">邀请码</label>
-          <div class="field-action"><input id="invite-code" type="password" name="invite" autocomplete="off" maxlength="128" spellcheck="false" placeholder="输入收到的邀请码" required><button class="button button-primary" id="access-submit" type="submit" disabled>验证邀请码</button></div>
-          <div id="access-turnstile" class="captcha-slot"></div>
-          <p class="message" id="access-message" role="status" aria-live="polite"></p>
-        </form>
-        <div id="tester-panel" hidden>
-          <p class="success-line">已验证 · <strong id="tester-number"></strong></p>
-          <div class="release-info"><span class="muted">测试版本</span><strong id="release-version">下载尚未开放</strong></div>
-          <p class="hash" id="release-hash"></p>
-          <a id="download-link" class="button button-primary" href="#" target="_blank" rel="noopener noreferrer" hidden>前往受控下载 <span aria-hidden="true">↗</span></a>
-          <div id="release-extraction" class="extraction" hidden><span>提取码</span><code id="release-extraction-value"></code><button id="copy-extraction" type="button" class="text-button">复制</button></div>
-          <p id="release-note" class="hint"></p>
-          <button class="text-button feedback-toggle" id="toggle-feedback" type="button" aria-expanded="false" aria-controls="feedback-area">提交测试问题 ↓</button>
-          <div id="feedback-area" hidden>
-            <form id="feedback-form">
-              <div class="two-col"><div><label for="feedback-kind">问题类型</label><select id="feedback-kind"><option value="execution">建模/求解</option><option value="science">科学结果</option><option value="ui">安装/界面</option><option value="suggestion">建议</option></select></div><div><label for="feedback-severity">影响程度</label><select id="feedback-severity"><option value="blocked">无法继续</option><option value="partial">部分功能异常</option><option value="minor">轻微问题</option></select></div></div>
-              <label for="feedback-title">简短标题</label><input id="feedback-title" maxlength="120" required placeholder="例如：点击 Solve 后无响应">
-              <label for="feedback-details">发生了什么？如何复现？</label><textarea id="feedback-details" rows="3" maxlength="4000" required placeholder="请只提供复现步骤，不要粘贴完整日志、许可证或私有文件路径。"></textarea>
-              <div class="two-col"><div><label for="feedback-code">错误代码（选填）</label><input id="feedback-code" maxlength="80" placeholder="E_RUNTIME_..."></div><div><label for="feedback-version">软件版本（选填）</label><input id="feedback-version" maxlength="80" placeholder="RC5.1"></div></div>
-              <button class="button button-secondary" type="submit" id="feedback-submit">提交反馈</button><p class="message" id="feedback-message" role="status" aria-live="polite"></p>
-            </form>
-          </div>
-        </div>
-      </section>
-
-      <section class="section" id="apply" aria-labelledby="apply-title">
-        <div class="section-header"><span class="section-index">01</span><h2 id="apply-title">申请测试资格</h2></div>
-        <p class="section-description">还没有邀请码？留下一个联系邮箱，等待人工审核。不会自动分配编号，也不保证获得名额。</p>
-        <div class="steps"><span>提交邮箱</span><span aria-hidden="true">→</span><span>人工审核</span><span aria-hidden="true">→</span><span>私下发送编号与邀请码</span></div>
-        <form id="apply-form" class="apply-form" novalidate>
-          <label for="apply-email">联系邮箱</label>
-          <div class="field-action"><input id="apply-email" type="email" name="email" autocomplete="email" maxlength="254" placeholder="you@example.com" required><button class="button button-primary" id="apply-submit" type="submit" disabled>提交申请</button></div>
-          <div id="apply-turnstile" class="captcha-slot"></div>
-          <label class="check"><input id="apply-consent" type="checkbox" required><span>我同意使用此邮箱接收内测资格审核结果。不会在公开仓库展示申请资料。</span></label>
-          <p class="message" id="apply-message" role="status" aria-live="polite"></p>
-        </form>
-      </section>
-
-      <section class="section section-help" id="help" aria-labelledby="help-title">
-        <div class="section-header"><span class="section-index">02</span><h2 id="help-title">使用帮助</h2></div>
-        <details><summary>拿到邀请码后怎么安装？<span aria-hidden="true">+</span></summary><p>点击页面上方「领取测试版」，验证邀请码后查看可用版本、下载链接及 SHA-256；安装前请阅读 <button type="button" class="help-open-button" data-open-help>完整帮助文档 ↗</button>。</p></details>
-        <details><summary>需要准备什么环境？<span aria-hidden="true">+</span></summary><p>测试版面向 Windows；涉及真实建模的流程需要你自行安装具有适用许可的 COMSOL，部分 AI 功能需要 Ollama 与对应本地模型。请以实际版本的测试说明为准。</p></details>
-        <details><summary>遇到错误怎么反馈？<span aria-hidden="true">+</span></summary><p>登录测试者入口后选择「提交测试问题」，提供软件版本、错误代码及最小复现步骤。不要上传许可证、私人模型或完整日志。</p></details>
-        <p class="full-help"><button type="button" class="help-open-button" data-open-help>查看完整帮助文档 ↗</button></p>
-      </section>
-      <p class="footnote">本页面仅用于受控测试发放，不代表公开正式版本已经获得上线验收。</p>
-    </main>
-    <footer class="footer"><span>Scientific Workbench · Closed Beta</span><span>001–999 · 人工审核发放</span></footer>
-  </div>
-  <dialog id="help-dialog" class="help-dialog" aria-label="测试版使用帮助">
-    <div class="help-dialog-head"><div><span>DOCUMENTATION</span><h2>使用帮助</h2></div><button id="close-help" type="button" class="help-dialog-close" aria-label="关闭帮助">×</button></div>
-    <div class="help-dialog-body"><nav id="help-toc" class="help-toc" aria-label="帮助章节目录"></nav><div class="help-scroll"><p id="help-load-status" role="status"></p><article id="help-markdown" class="help-markdown"></article></div></div>
-  </dialog>
-</body>
-</html>
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#f7f5ee"><meta name="referrer" content="strict-origin-when-cross-origin"><meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'self'; script-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'"><link rel="icon" href="./favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="./assets/style.css"><script defer src="./assets/app.js"></script><meta name="description" content="Scientific Workbench：面向 COMSOL 的本地优先科学仿真工作台，提供计划、模型读回和证据验证。"><title>首页 · Scientific Workbench</title></head><body><header class="site-header"><div class="wrap header-in"><a class="brand" href="./index.html"><span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 19V7l5 5 4-7 5 7v7"/><path d="M5 19h14"/></svg></span><span>Scientific Workbench</span></a><nav class="desktop-nav" aria-label="主导航"><a href="./index.html#features">功能</a><a href="./index.html#workflow">工作流程</a><a href="./docs/index.html">使用文档</a><a href="./docs/research.html">研究</a><a href="./index.html#download">下载</a></nav><a class="top-github" href="https://github.com/lovesky514514-cmd/scientific-workbench-beta" target="_blank" rel="noopener noreferrer">GitHub ↗</a><button class="nav-toggle" type="button" aria-label="打开导航" aria-expanded="false" aria-controls="mobile-menu" data-nav-toggle>☰</button></div><nav class="mobile-menu" id="mobile-menu" data-mobile-menu hidden aria-label="移动端导航"><a href="./index.html#features">功能</a><a href="./index.html#workflow">工作流程</a><a href="./docs/index.html">使用文档</a><a href="./docs/research.html">研究</a><a href="./index.html#download">下载</a><a href="https://github.com/lovesky514514-cmd/scientific-workbench-beta">GitHub ↗</a></nav></header>
+<main id="top">
+<section class="hero"><div class="wrap hero-grid"><div class="hero-copy"><span class="eyebrow"><i class="signal"></i> LOCAL-FIRST · SCIENTIFIC WORKFLOW</span><h1>从自然语言<br>走向<em>可信的</em><br>科学仿真。</h1><p>Scientific Workbench 连接本地 COMSOL 工作流，将任务规划、模型状态读回与科学验证组织在同一个清晰的工作空间中。让每一次执行都有可追溯的依据。</p><div class="button-row"><a class="btn btn-solid" href="docs/getting-started.html">阅读快速开始 <span aria-hidden="true">↗</span></a><a class="btn btn-ghost" href="#features">了解核心能力 <span aria-hidden="true">↓</span></a></div><div class="note-inline"><span class="mini-dot"></span>需要用户自行安装并合法授权 COMSOL · 公开安装包尚未发布</div></div>
+<div class="hero-art" aria-label="Scientific Workbench 工作台理念示意"><div class="workbench"><div class="wb-head"><div class="wb-dots"><i></i><i></i><i></i></div><div class="wb-brand">SCIENTIFIC WORKBENCH</div><div class="wb-token">● Local Runtime</div></div><div class="wb-body"><div class="wb-side"><p>WORKSPACE</p><span>ASK</span><span class="active">PLAN</span><span>RUN</span><span>Evidence</span><p style="margin-top:30px">PROJECT</p><span>Model 01</span><span>Timeline</span></div><div class="wb-main"><div class="wb-topline"><span>Scientific Plan / Overview</span><span class="wb-token">READBACK</span></div><h3>把模型状态交还给事实</h3><p>请求、执行和验证分开记录；只有证据完整，才能成为严格成功。</p><div class="wb-flow"><span class="flow-step">PLAN</span><b>→</b><span class="flow-step">EXECUTE</span><b>→</b><span class="flow-step">VERIFY</span></div><div class="wb-result"><div class="wb-result-top">RELIABILITY CONTRACT <small>示意状态</small></div><div class="wb-metric"><span>Command Success</span><span class="wb-status">✓ Verified</span></div><div class="wb-metric"><span>Model State</span><span class="wb-status">✓ Readback</span></div><div class="wb-metric"><span>Scientific Validation</span><span class="wb-status wait">○ Pending</span></div><div class="wb-metric"><span>Evidence Contract</span><span class="wb-status wait">○ Pending</span></div></div><div class="wb-footer">No unverified success claims.</div></div></div></div><div class="wb-caption">概念界面 · 非真实运行截图或实验结果</div></div></div></section>
+<section class="section sep" id="features"><div class="wrap"><div class="section-head"><div><span class="eyebrow">CAPABILITIES / 核心能力</span><h2>不止于让程序<br>完成一次调用。</h2></div><p>面向科学建模的难点：单位是否正确、边界是否选对、求解到底运行了什么，以及如何证明结果属于这一次执行。</p></div><div class="feature-list"><div class="feature-line"><span class="feature-number">01 / PLAN</span><h3>结构化科学计划</h3><p>将请求拆解为几何、物理场、材料、边界条件、网格、求解与验证要求，减少信息隐藏在自然语言中的风险。</p></div><div class="feature-line"><span class="feature-number">02 / READBACK</span><h3>读取实际模型状态</h3><p>通过 COMSOL 连接路径核对真实的模型树与参数，而不是仅相信 AI 或执行接口的成功声明。</p></div><div class="feature-line"><span class="feature-number">03 / VALIDATION</span><h3>科学验证与证据</h3><p>区分命令成功、模型状态、科学检查与运行证据；条件不足时明确标注失败或不可验证。</p></div><div class="feature-line"><span class="feature-number">04 / LOCAL</span><h3>本地优先的工作方式</h3><p>桌面界面与本地运行时协作；实际模型、组件权限和可用 AI 服务由用户环境决定。</p></div></div></div></section>
+<section class="flow-section" id="workflow"><div class="wrap"><div class="section-head"><div><span class="eyebrow">RELIABILITY / 可信工作流</span><h2>把“完成”拆成<br>四个可检查的事实。</h2></div><p>命令返回成功，不代表物理条件真的生效；求解器收敛，也不自动代表结果可信。严格成功要求四个条件同时成立。</p></div><div class="path-steps"><div class="path-step"><small>01 · EXECUTION</small><h3>执行成功</h3><p>检查操作是否确实执行到预期阶段。</p></div><div class="path-step"><small>02 · STATE</small><h3>状态已验证</h3><p>从真实 COMSOL 模型读回参数与设置。</p></div><div class="path-step"><small>03 · SCIENCE</small><h3>科学检查</h3><p>检查数值、单位、边界行为与物理约束。</p></div><div class="path-step"><small>04 · EVIDENCE</small><h3>证据完整</h3><p>确认读回、求解与结果属于同一次运行。</p></div></div></div></section>
+<section class="section" id="docs"><div class="wrap doc-feature"><div><span class="eyebrow">DOCUMENTATION / 使用文档</span><h2 style="font-size:clamp(30px,3vw,44px);letter-spacing:-.055em;line-height:1.3;margin:18px 0">从准备环境开始，<br>一步步理解工作台。</h2><p>无需申请资格，直接阅读公开的产品文档。了解系统要求、连接方式、工作流概念与常见问题。</p><a class="btn btn-ghost" href="docs/index.html">打开完整文档中心 ↗</a></div><div class="doc-links"><a class="doc-link" href="docs/getting-started.html"><span><strong>快速开始</strong><small>环境准备、安装说明、第一次模型读回</small></span><span class="doc-arr">↗</span></a><a class="doc-link" href="docs/workflow.html"><span><strong>工作流程</strong><small>ASK / PLAN / RUN、模型和证据的关系</small></span><span class="doc-arr">↗</span></a><a class="doc-link" href="docs/verification.html"><span><strong>验证与安全边界</strong><small>理解 PASS、FAILED 和 UNVERIFIABLE</small></span><span class="doc-arr">↗</span></a><a class="doc-link" href="docs/troubleshooting.html"><span><strong>故障排查</strong><small>运行环境、Bridge 鉴权及常见问题</small></span><span class="doc-arr">↗</span></a></div></div></section>
+<section class="section sep" id="download"><div class="wrap"><div class="release-panel"><div><span class="eyebrow">RELEASES / 下载</span><h2>面向公开使用的版本，<br>准备中。</h2><p>正式安装包和完整集成源码仍在发行与许可审查中。当前网站提供产品信息和文档，不提供未完成验收的 EXE。</p></div><div class="release-state"><span class="flag">NOT YET AVAILABLE</span><strong>Windows 公开安装包暂未开放</strong><small>计划支持 Windows x64 与用户已安装、合法授权的 COMSOL。确切版本支持范围以最终发行说明为准。</small><p style="margin-top:17px"><a style="color:white;font-weight:700;font-size:12px" href="https://github.com/lovesky514514-cmd/scientific-workbench-beta">查看 GitHub 项目状态 ↗</a></p></div></div></div></section>
+</main><footer class="footer"><div class="wrap"><div class="footer-top"><div><div class="footer-title">Scientific Workbench</div><div class="footer-desc">为科学工作流提供更清晰的计划、状态与证据。</div></div><nav class="footer-nav" aria-label="页脚导航"><a href="./docs/index.html">文档中心</a><a href="./docs/research.html">研究与实验</a><a href="./docs/faq.html">常见问题</a><a href="https://github.com/lovesky514514-cmd/scientific-workbench-beta">GitHub</a><a href="mailto:swbtest001@yeah.net">联系反馈</a></nav></div><div class="footer-bottom"><span>© 2026 SuKoYa · Independent research project</span><span>COMSOL 为其权利人所有；本项目不是 COMSOL 官方产品。</span></div></div></footer></body></html>
