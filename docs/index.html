@@ -1,6 +1,35 @@
-<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#f7f5ee"><meta name="referrer" content="strict-origin-when-cross-origin"><meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'self'; script-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'"><link rel="icon" href="../assets/brand-icon.png" type="image/png"><link rel="stylesheet" href="../assets/style.css"><script defer src="../assets/app.js"></script><meta name="description" content="Scientific Workbench：面向 COMSOL 的本地优先科学仿真工作台，提供计划、模型读回和证据验证。"><title>文档中心 · Scientific Workbench</title></head><body><header class="site-header"><div class="wrap header-in"><a class="brand" href="../index.html"><img class="brand-icon" src="../assets/brand-icon.png" alt="">Scientific Workbench</a><nav class="header-links" aria-label="主导航"><a href="../index.html">首页</a><a href="index.html">文档</a><a href="../index.html#download">下载</a><a href="https://github.com/lovesky514514-cmd/scientific-workbench-beta">GitHub ↗</a></nav></header><main><section class="doc-hero"><div class="wrap"><span class="eyebrow">DOCUMENTATION / SCIENTIFIC WORKBENCH</span><h1>文档中心</h1><p>从系统要求到科学结果的证据边界，按实际使用顺序整理。</p></div></section><div class="wrap doc-layout"><nav class="doc-nav" aria-label="文档导航"><a href="index.html" aria-current="page">文档总览</a><a href="getting-started.html">快速开始</a><a href="workflow.html">工作流程</a><a href="verification.html">验证与证据</a><a href="compatibility.html">COMSOL 兼容性</a><a href="troubleshooting.html">故障排查</a><a href="research.html">研究与论文</a><a href="faq.html">常见问题</a></nav><article class="doc-body">
-<p class="doc-lead">Scientific Workbench 是面向本地科学建模的研究工作台。文档既介绍操作流程，也明确哪些能力已测试、哪些仍处于内部候选阶段。</p>
-<div class="doc-tip">当前公开的只是介绍网站和文档。RC5.2 的公开源码、安装程序及正式发行尚未获得批准，因此文档不提供不存在的下载按钮或安装命令。</div>
-<h2>建议阅读顺序</h2><ol><li><a href="getting-started.html">快速开始</a>：了解 COMSOL 安装、授权和发行状态。</li><li><a href="workflow.html">工作流程</a>：认识 ASK / PLAN / RUN 与结构化 ScientificPlan。</li><li><a href="verification.html">验证与证据</a>：理解四项可靠性条件，以及何时应标记 UNVERIFIABLE。</li><li><a href="compatibility.html">版本与环境</a>：区分已测试范围和未验证范围。</li><li><a href="troubleshooting.html">故障排查</a>：定位 Runtime、Java Bridge 和模型读回问题。</li></ol>
-<h2>软件和 COMSOL 的关系</h2><p>本项目不会提供 COMSOL 软件、许可证或其专有运行库。实际的 COMSOL 建模功能，需要使用者自行取得符合相关许可协议的安装及必要模块。它也不是 COMSOL 官方出品。</p>
-<h2>反馈与帮助</h2><p>可以通过 <a href="mailto:swbtest001@yeah.net">swbtest001@yeah.net</a> 联系维护者；反馈时只提交最小复现步骤和脱敏后的错误描述，不要发送密钥、私人模型或完整运行日志。</p><a class="doc-end" href="getting-started.html">继续阅读下一节 ↗</a></article></div></main><footer class="footer"><div class="wrap"><div class="footer-top"><div><div class="footer-title">Scientific Workbench</div><div class="footer-desc">为科学工作流提供更清晰的计划、状态与证据。</div></div><nav class="footer-nav" aria-label="页脚导航"><a href="../docs/index.html">文档中心</a><a href="../docs/research.html">研究与实验</a><a href="../docs/faq.html">常见问题</a><a href="https://github.com/lovesky514514-cmd/scientific-workbench-beta">GitHub</a><a href="mailto:swbtest001@yeah.net">联系反馈</a></nav></div><div class="footer-bottom"><span>© 2026 SuKoYa · Independent research project</span><span>COMSOL 为其权利人所有；本项目不是 COMSOL 官方产品。</span></div></div></footer></body></html>
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f5f2eb">
+  <meta name="description" content="Scientific Workbench 文档：入门、COMSOL 集成、证据与诊断。">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self'; script-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
+  <title>文档中心 · Scientific Workbench</title>
+  <link rel="icon" href="../assets/brand-icon.png">
+  <link rel="stylesheet" href="../assets/site.css">
+</head>
+<body class="docs-page">
+  <a class="skip" href="#main">跳至正文</a>
+  <header class="site-header"><a class="brand" href="../"><img src="../assets/brand-icon.png" alt="" width="38" height="38"><span>Scientific Workbench</span></a><nav aria-label="主导航"><a href="../">产品</a><a class="active" href="./">文档中心</a><a href="#release">发行状态</a></nav></header>
+  <div class="docs-shell">
+    <aside class="docs-sidebar" aria-label="文档章节"><p class="sidebar-title">DOCUMENTATION</p><nav><span>开始</span><a href="#overview">文档概览</a><a href="#requirements">环境与安装</a><a href="#first-run">首次启动</a><span>科学工作流</span><a href="#tasks">创建与导入项目</a><a href="#comsol">COMSOL 集成</a><a href="#evidence">结果与证据</a><span>支持</span><a href="#troubleshooting">故障诊断</a><a href="#release">发行与许可</a></nav></aside>
+    <main class="docs-main" id="main">
+      <p class="eyebrow">DOCUMENTATION / OVERVIEW</p><h1>Scientific Workbench 文档中心</h1><p class="docs-lead">从环境准备到模型证据，按实际操作顺序查找信息。文档描述软件设计与已实现接口；具体科学结果只能由当前运行的真实证据支持。</p>
+      <section id="overview"><p class="chapter">01 / 概览</p><h2>产品边界</h2><p>Scientific Workbench 是本地优先的独立科学建模工作台。Python Scientific Runtime 管理计划、任务状态与科学检查；Java Bridge 靠近 COMSOL Model API 执行受控读回与操作；Tauri 负责桌面启动和自有进程生命周期。它不内置 COMSOL 安装文件、JAR、许可证或私有知识库。</p><div class="note"><strong>不要混淆三种状态</strong><p>Command Success、Model State Verified 与 Scientific Validation Passed 是独立判断。任一必需证据缺失时，不应把结果显示为科学通过。</p></div></section>
+      <section id="requirements"><p class="chapter">02 / 开始</p><h2>环境与安装</h2><ul><li>Windows 10/11 x64 与可写的用户工作区。</li><li>需要真实建模时，用户需自行提供适用的 COMSOL 安装和有效模块许可。</li><li>本地模型能力取决于实际 Ollama 服务和可用模型；不可用时会显示不可用，不应自动伪装为其他模型。</li><li>公开 Windows 安装包尚未完成许可、载荷和干净安装审核；请勿把历史 RC 安装包视作正式版。</li></ul></section>
+      <section id="first-run"><p class="chapter">03 / 开始</p><h2>首次启动与预检</h2><p>应用启动后应显示环境检测结果：COMSOL、Java Bridge、Python Runtime、本地模型、可写空间和所需端口。若 Runtime 未连接，界面应显示错误或 Unavailable，而非使用演示模型数据填充。设置与诊断日志位于用户本地工作区；导出日志前请先检查私人路径与模型信息。</p></section>
+      <section id="tasks"><p class="chapter">04 / 工作流</p><h2>新建项目与导入 MPH</h2><p>首页应分开显示新建任务与导入模型。导入 MPH 时保留原文件，不在未经确认时覆盖；先进行只读预览及模型树读回，再由用户确认修改目标。可修改性取决于模型中真实对象身份、选区、材料与物理接口读回；缺少可靠映射时应暂停修改并要求人工核对。</p><p>自然语言请求先转为 Scientific Plan。批准计划只允许进入执行，不意味着 COMSOL 求解成功，更不意味着科学检查通过。</p></section>
+      <section id="comsol"><p class="chapter">05 / 工作流</p><h2>COMSOL 集成与本地鉴权</h2><p>桌面端为本地 Runtime 生成独立会话令牌；Java Bridge 使用另外的高熵令牌，所有 HTTP context 都要求鉴权。只监听 127.0.0.1 并不能替代令牌。Bridge 与 COMSOL 的实际可用性必须由本机环境检测和 live readback 决定，不能从软件包内存在源码推断。</p><div class="note"><strong>许可提醒</strong><p>本项目与 COMSOL 无隶属关系。公开发行所需的 COMSOL API/应用分发边界仍待负责人和权利方确认。</p></div></section>
+      <section id="evidence"><p class="chapter">06 / 工作流</p><h2>结果、图像与证据</h2><p>结果视图可逐张查看与当前 run/attempt 绑定的图表；放大、换页和图像说明仅是展示能力。Model Card 应列出模型读回、网格/DOF、求解状态、收敛与数值检查，并与原始产物的 SHA-256 相互对应。旧任务或旧 attempt 的产物不得作为当前任务的 Verified 证据。</p><p>如果模型读回或关键诊断缺失，正确状态是 Unverifiable/Unavailable，而不是填入零值或复制历史结论。</p></section>
+      <section id="troubleshooting"><p class="chapter">07 / 支持</p><h2>故障诊断</h2><dl><dt>COMSOL 不可用</dt><dd>检查本机安装、许可、模块与 Java 环境；不要通过复制专有 JAR 到发行包来绕过检测。</dd><dt>Runtime 启动失败</dt><dd>查看应用内环境预检与日志导出，检查端口占用、写入权限和自有进程清理状态。</dd><dt>模型不可验证</dt><dd>核对当前 run/attempt、模型读回和 artifact manifest；不要仅凭 PNG 或 MPH 文件存在判断科学成功。</dd><dt>导入 MPH 报错</dt><dd>保留原件和错误日志；先只读检查兼容性，再决定是否创建新的修改副本。</dd></dl></section>
+      <section id="release"><p class="chapter">08 / 支持</p><h2>发行状态、许可与隐私</h2><p>本站是拟公开的产品与文档中心静态稿，不提供内测发放功能。旧 Cloudflare 测试服务及其 D1 数据需要由账号负责人完成停用与保全核验，本站不再连接该 API。</p><p>Windows 公开安装包暂未获发行审批。必须完成源码权属、第三方许可证、COMSOL 集成分发权限、载荷扫描及干净安装验收后，才可提供下载。产品不会随包分发私有知识库、COMSOL 二进制或用户模型。联系 <a href="mailto:swbtest001@yeah.net">swbtest001@yeah.net</a>。</p></section>
+      <nav class="docs-next" aria-label="章节导航"><a href="#overview">返回顶部 ↑</a><a href="../">返回产品首页 →</a></nav>
+    </main>
+    <aside class="docs-toc" aria-label="本页目录"><p>本页目录</p><a href="#overview">产品边界</a><a href="#requirements">环境与安装</a><a href="#tasks">项目与 MPH</a><a href="#comsol">COMSOL 集成</a><a href="#evidence">证据语义</a><a href="#troubleshooting">故障诊断</a><a href="#release">发行状态</a></aside>
+  </div>
+  <footer class="site-footer docs-footer"><span>Scientific Workbench · Independent third-party software</span><span>SuKoYa · <a href="mailto:swbtest001@yeah.net">swbtest001@yeah.net</a></span></footer>
+</body>
+</html>

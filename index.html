@@ -1,8 +1,66 @@
-<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#f6f3ed"><meta name="description" content="Scientific Workbench：基于 COMSOL 的本地科学仿真工作台，提供结构化计划、模型读回和可靠性验证。"><meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'self'; img-src 'self' data:; base-uri 'none'; form-action 'none'"><link rel="icon" href="./assets/brand-icon.png" type="image/png"><link rel="stylesheet" href="./assets/style.css"><title>Scientific Workbench · 科学仿真工作台</title></head><body><header class="site-header"><div class="wrap header-in"><a class="brand" href="./"><img class="brand-icon" src="./assets/brand-icon.png" alt="">Scientific Workbench</a><nav class="header-links" aria-label="主导航"><a href="#features">功能</a><a href="./docs/index.html">文档</a><a href="#download">下载</a><a href="https://github.com/lovesky514514-cmd/scientific-workbench-beta">GitHub ↗</a></nav></div></header><main><section class="hero hero-site">
-<div class="hero-top"><p class="eyebrow">LOCAL-FIRST SCIENTIFIC WORKBENCH</p><h1>让科学仿真，有据可依。</h1></div>
-<div class="hero-content">
-<div class="hero-copy"><p class="lead">Scientific Workbench 将自然语言任务、结构化建模计划与本地 COMSOL 工作流连接起来。实际模型读回、科学检查和运行证据分别记录，不把“执行完成”直接当成“科学正确”。</p>
-<div class="action"><a class="btn btn-primary" href="./docs/index.html">阅读使用文档 →</a><a class="btn btn-secondary" href="#features">了解工作台</a></div>
-<p class="small-note">独立研究项目 · 使用真实 COMSOL 功能需自行安装并合法授权 COMSOL</p></div>
-<figure class="hero-preview"><a href="./assets/workbench-desktop-rc51.webp" target="_blank" rel="noopener noreferrer" aria-label="查看 Scientific Workbench 真实桌面软件截图"><img src="./assets/workbench-desktop-rc51.webp" alt="RC5.1 已安装 Scientific Workbench 创建科学任务的真实界面，截图时 COMSOL 显示不可用。" width="1920" height="1080" decoding="async" fetchpriority="high"></a><figcaption>RC5.1 桌面程序真实截图 · 点击查看大图。仅展示软件界面，不代表 RC5.2 科学求解验收。</figcaption></figure>
-</div></section><div class="wrap"><section class="section" id="features"><p class="eyebrow">01 / CAPABILITIES</p><h2>核心能力</h2><p class="section-description">聚焦科学工作流，而不是堆叠繁杂的功能面板。</p><ul class="text-list"><li><strong>ScientificPlan</strong><span>将几何、材料、物理场、边界条件、网格与求解要求组织成结构化计划。</span></li><li><strong>Model Readback</strong><span>从 COMSOL 实际模型树读取状态，不只相信模型或界面声称“已完成”。</span></li><li><strong>Scientific Validation</strong><span>区分命令执行成功、模型状态验证、科学检查和证据完整性。</span></li><li><strong>Local Runtime</strong><span>本地桌面运行环境；必要的科学计算仍在用户自己的 COMSOL 环境中进行。</span></li></ul></section><section class="section" id="workflow"><p class="eyebrow">02 / WORKFLOW</p><h2>从计划到证据</h2><p class="section-description">ASK 理解问题，PLAN 明确条件，RUN 执行并读取真实状态；只有满足证据要求，才能标记为严格成功。</p><div class="steps"><b>ASK</b><i>→</i><b>PLAN</b><i>→</i><b>RUN</b><i>→</i><b>READBACK</b><i>→</i><b>VERIFY</b></div></section><section class="section" id="docs"><p class="eyebrow">03 / DOCUMENTATION</p><h2>使用文档</h2><p class="section-description">没有复杂的侧栏。按阅读顺序，从环境准备到科学证据的核对。</p><ul class="doc-links"><li><a href="./docs/getting-started.html">快速开始 <small>准备环境与初次使用 ↗</small></a></li><li><a href="./docs/workflow.html">工作流程 <small>ASK / PLAN / RUN ↗</small></a></li><li><a href="./docs/verification.html">验证与证据 <small>理解 PASS 与 UNVERIFIABLE ↗</small></a></li><li><a href="./docs/compatibility.html">COMSOL 兼容性 <small>已测试范围与要求 ↗</small></a></li><li><a href="./docs/troubleshooting.html">故障排查 <small>常见问题与支持 ↗</small></a></li><li><a href="./docs/research.html">研究与论文 <small>方法与局限性 ↗</small></a></li></ul></section><section class="section" id="download"><p class="eyebrow">04 / RELEASES</p><h2>软件下载</h2><p class="section-description">Windows 公开安装包和集成源码仍在审查与验收中，目前暂不开放下载；开放后将在此公布正式版本、SHA-256 和安装说明。</p><p class="notice">不提供 COMSOL 软件及其许可证。请勿将旧内测构建当作公开正式版。</p></section></div></main><footer class="footer"><div class="wrap footer-in"><span>Scientific Workbench · SuKoYa</span><span><a href="mailto:swbtest001@yeah.net">联系反馈</a>　·　<a href="./docs/faq.html">常见问题</a></span></div></footer></body></html>
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f5f2eb">
+  <meta name="description" content="Scientific Workbench：面向本地 COMSOL 科学建模、证据核验与结果审阅的独立工作台。">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self'; script-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
+  <title>Scientific Workbench · 产品与文档</title>
+  <link rel="icon" href="./assets/brand-icon.png">
+  <link rel="stylesheet" href="./assets/site.css">
+  <script src="./assets/gallery.js" defer></script>
+</head>
+<body>
+  <a class="skip" href="#main">跳至正文</a>
+  <header class="site-header">
+    <a class="brand" href="./"><img src="./assets/brand-icon.png" alt="" width="38" height="38"><span>Scientific Workbench</span></a>
+    <nav aria-label="主导航"><a class="active" href="./">产品</a><a href="./docs/">文档中心</a><a href="./docs/#release">发行状态</a></nav>
+  </header>
+  <main id="main">
+    <section class="hero wrap">
+      <div class="hero-copy">
+        <p class="eyebrow"><span class="status-dot"></span> LOCAL-FIRST SCIENTIFIC WORKSPACE</p>
+        <h1>让建模过程<br><em>有迹可循。</em></h1>
+        <p class="lead">Scientific Workbench 把自然语言任务、科学建模计划、COMSOL 模型读回和可审阅证据放在同一工作空间。它是独立第三方工具，不能替代 COMSOL 许可、求解器判断或研究者的科学审核。</p>
+        <div class="hero-actions"><a class="button primary" href="./docs/">阅读使用文档 <span aria-hidden="true">↗</span></a><a class="text-link" href="#workflow">了解工作流程 <span aria-hidden="true">↓</span></a></div>
+        <p class="release-note"><strong>发行说明</strong> Windows 公开安装包仍在载荷、许可与安装验收中；本站不提供未经批准的下载。</p>
+      </div>
+      <figure class="hero-visual" aria-label="实际安装版 Scientific Workbench 桌面界面截图">
+        <div class="hero-gallery" data-gallery>
+          <div class="gallery-frame">
+          <a class="hero-slide is-active" href="./assets/workbench-desktop-rc51.png" target="_blank" rel="noopener" aria-label="放大查看新建任务界面"><img src="./assets/workbench-desktop-rc51.png" width="2160" height="1215" alt="已安装桌面程序的新建科学任务界面，包含导入 MPH 入口；COMSOL 显示不可用。"></a>
+          <a class="hero-slide" href="./assets/workbench-onboarding-rc51.png" target="_blank" rel="noopener" aria-label="放大查看首次使用引导" tabindex="-1" aria-hidden="true"><img src="./assets/workbench-onboarding-rc51.png" width="2160" height="1215" alt="已安装桌面程序的首次使用引导，介绍描述、审阅和验证步骤。"></a>
+          <a class="hero-slide" href="./assets/workbench-settings-rc51.png" target="_blank" rel="noopener" aria-label="放大查看设置界面" tabindex="-1" aria-hidden="true"><img src="./assets/workbench-settings-rc51.png" width="2160" height="1215" alt="已安装桌面程序的设置界面，展示语言、本地模型提供方及环境引导入口。"></a>
+          <a class="hero-slide" href="./assets/workbench-results-rc51.png" target="_blank" rel="noopener" aria-label="放大查看结果证据界面" tabindex="-1" aria-hidden="true"><img src="./assets/workbench-results-rc51.png" width="2160" height="1215" alt="已安装桌面程序的结果证据界面；当前没有已验证结果，四项检查均未通过。"></a>
+          </div>
+          <div class="gallery-toolbar" aria-label="截图换页控制">
+          <button class="gallery-arrow gallery-prev" type="button" data-gallery-prev aria-label="上一张截图">‹</button>
+          <div class="gallery-controls" aria-label="截图换页控制">
+            <button class="gallery-dot is-active" type="button" data-gallery-index="0" aria-label="查看第 1 张截图" aria-current="true"></button>
+            <button class="gallery-dot" type="button" data-gallery-index="1" aria-label="查看第 2 张截图"></button>
+            <button class="gallery-dot" type="button" data-gallery-index="2" aria-label="查看第 3 张截图"></button>
+            <button class="gallery-dot" type="button" data-gallery-index="3" aria-label="查看第 4 张截图"></button>
+            <button class="gallery-pause" type="button" data-gallery-pause aria-label="暂停自动换页" aria-pressed="false">Ⅱ</button>
+          </div>
+          <button class="gallery-arrow gallery-next" type="button" data-gallery-next aria-label="下一张截图">›</button>
+          </div>
+        </div>
+      </figure>
+    </section>
+    <section class="rule-section wrap" id="workflow">
+      <div class="section-intro"><p class="eyebrow">WORKFLOW</p><h2>从请求到可核查的结果</h2><p>用户始终保留计划确认、运行中干预和结果复核权。每一步是否可执行，取决于实际环境与证据。</p></div>
+      <ol class="workflow-list">
+        <li><span>01</span><div><h3>提出任务</h3><p>输入目标、几何、材料与边界条件；缺少必需信息时明确提示，不猜测物理量。</p></div></li>
+        <li><span>02</span><div><h3>审阅计划</h3><p>检查参数单位、所选 Physics、边界映射和求解设置。人工批准表示允许执行，不等于科学验证。</p></div></li>
+        <li><span>03</span><div><h3>本地执行</h3><p>在具备许可的 COMSOL 安装上构建与求解，按当前 run/attempt 记录模型读回、进度和诊断。</p></div></li>
+        <li><span>04</span><div><h3>核查证据</h3><p>分别报告命令执行、模型状态和科学验证；缺失证据应为不可验证，而非“成功”。</p></div></li>
+      </ol>
+    </section>
+    <section class="features wrap" aria-labelledby="features-title"><div class="section-intro"><p class="eyebrow">CAPABILITIES</p><h2 id="features-title">围绕科学工作，而非聊天窗口</h2></div><div class="feature-lines"><article><span>01 / MODEL</span><h3>导入与模型工作区</h3><p>导入 MPH 后保留来源身份；新建项目与导入模型分区展示。实际可修改范围以模型读回和当前支持的操作为准。</p></article><article><span>02 / CONTROL</span><h3>可中断的执行</h3><p>运行中的暂停、取消与恢复均应有明确状态；不把旧 attempt 的产物认证为当前结果。</p></article><article><span>03 / EVIDENCE</span><h3>结果与模型卡</h3><p>图像、模型文件、哈希、求解诊断及科学检查分开呈现，帮助研究者追溯结论。</p></article></div></section>
+    <section class="docs-callout wrap"><div><p class="eyebrow">DOCUMENTATION</p><h2>安装之前，先了解边界。</h2><p>文档覆盖环境要求、COMSOL 集成、MPH 导入、证据语义和故障诊断。当前公开发行与下载仍待批准。</p></div><a class="button light" href="./docs/">进入文档中心 <span aria-hidden="true">→</span></a></section>
+  </main>
+  <footer class="site-footer wrap"><span>Scientific Workbench · Independent third-party software</span><span>SuKoYa · <a href="mailto:swbtest001@yeah.net">swbtest001@yeah.net</a></span><span>COMSOL 是其权利人的商标；本项目不提供 COMSOL 软件或许可证。</span></footer>
+</body>
+</html>
