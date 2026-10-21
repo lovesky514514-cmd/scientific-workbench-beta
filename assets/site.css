@@ -24,3 +24,5 @@
 .gallery-dot.is-active{background:var(--deep)}
 .gallery-pause{color:var(--deep);border-left-color:var(--line);padding-left:10px}
 .gallery-arrow:focus-visible,.gallery-dot:focus-visible,.gallery-pause:focus-visible{outline:2px solid var(--deep);outline-offset:2px}
+/* Keep the source link visible without making it compete with the primary docs action. */
+.button.source{border:1px solid var(--deep);color:var(--deep);background:transparent}.button.source:hover{background:var(--wash)}
