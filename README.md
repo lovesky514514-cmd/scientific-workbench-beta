@@ -61,6 +61,7 @@
 | --- | --- |
 | [产品首页](https://lovesky514514-cmd.github.io/scientific-workbench-beta/) | 项目定位、科学工作流、界面展示与发行说明 |
 | [文档中心](https://lovesky514514-cmd.github.io/scientific-workbench-beta/docs/) | 环境要求、首次启动、任务与计划、COMSOL、证据及故障处理 |
+| [技术知识库](https://lovesky514514-cmd.github.io/scientific-workbench-beta/knowledge-base/) | 科学建模、COMSOL、数值方法、代码实现与技术问答 |
 | [软件源码](https://github.com/lovesky514514-cmd/sky-workbench) | React / Tauri / Python / Java Bridge 实现及工程文档 |
 | [问题反馈](mailto:swbtest001@yeah.net) | 内部测试咨询与脱敏问题反馈 |
 
