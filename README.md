@@ -28,7 +28,7 @@
 
 ## About / 关于项目
 
-**SKY Workbench** 是一款开源、本地优先的 COMSOL AI 科学工作流助手，围绕自然语言任务、科学建模计划、受控仿真、模型状态读回和证据核验展开。
+**SKY Workbench** 是一款本地优先的 COMSOL AI 科学工作流助手，围绕自然语言任务、科学建模计划、受控仿真、模型状态读回和证据核验展开。软件本体的源码在独立仓库公开，**本站原创代码和文档不因此自动获得开放再利用授权**。
 
 这个仓库存放的是 **官方网站和文档中心**，不是桌面软件本体。你可以在这里了解项目、浏览真实界面、阅读使用指南，并前往独立的 [SKY Workbench 源码仓库](https://github.com/lovesky514514-cmd/sky-workbench)。
 
@@ -87,24 +87,6 @@
 └── .nojekyll           # GitHub Pages 配置
 ```
 
-## Run locally / 本地预览
-
-克隆仓库后，在项目根目录运行：
-
-```bash
-python -m http.server 8000
-```
-
-访问 [http://localhost:8000](http://localhost:8000)。网站本身无需安装前端依赖。
-
-如已安装 Node.js，也可以运行现有的静态检查：
-
-```bash
-node --test test_site.mjs
-```
-
-GitHub Pages 部署时使用 `main` 分支根目录（`/ (root)`）即可。此仓库仅修改展示网站；桌面程序开发请前往 [sky-workbench](https://github.com/lovesky514514-cmd/sky-workbench)。
-
 <details>
 <summary><strong>Screenshot provenance / 截图来源与 SHA-256</strong></summary>
 
@@ -118,6 +100,23 @@ GitHub Pages 部署时使用 `main` 分支根目录（`/ (root)`）即可。此�
 | `assets/workbench-results-rc51.png` | `649F9CA6BAE4AE981AD87F1DD8673F848C838BA69ABAE3CD21D5534CE9C32462` |
 
 </details>
+
+## Copyright & permissions / 版权与使用权限
+
+**Copyright © 2026 SuKoYa. All rights reserved. / 保留所有权利。**
+
+本仓库用于展示 SKY Workbench 官网和文档。对于 SuKoYa 有权授权的原创网站代码、文字及其他原创内容，**不提供通用的复制、修改、再发布、独立托管或商业使用许可**。未经事先书面授权，请勿将本站内容用于其他网站、软件或商业项目。公开可浏览并不代表允许任意复用。
+
+This public website repository does **not** grant a general license to copy, modify, redistribute, independently host, or commercially exploit its owner-controlled original website source and documentation. Prior written permission is required, except where applicable law or an existing license permits otherwise.
+
+**Existing licenses remain in effect / 既有授权不受影响：**
+
+- [SKY Workbench 软件主仓库](https://github.com/lovesky514514-cmd/sky-workbench)中的代码另依其适用的 Apache-2.0 及保留的历史、第三方许可处理；本站的版权声明不改变这些授权。
+- 官网使用的原创品牌图标沿用主仓库公布的 [CC BY 4.0 素材授权说明](https://github.com/lovesky514514-cmd/sky-workbench/blob/main/docs/ASSET_LICENSE.md)。该许可允许在满足条件时进行商业使用，不能通过本站声明撤销已经授予的权利。
+- 桌面界面截图仅用于本项目展示；其中涉及的第三方商标、组件和其他已授权素材仍受各自权利与许可约束。
+- GitHub 平台条款及适用法律所赋予的查看、Fork 等权利不受此声明排除。
+
+商业合作或其他使用授权请联系 [swbtest001@yeah.net](mailto:swbtest001@yeah.net)。
 
 ## Important notes / 使用边界
 
