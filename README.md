@@ -19,7 +19,7 @@
 </p>
 
 <p align="center">
-  <img alt="Version V2.0" src="https://img.shields.io/badge/Version-V2.0-225747?style=flat-square">
+  <img alt="Version V3.0" src="https://img.shields.io/badge/Version-V3.0-225747?style=flat-square">
   <img alt="GitHub Pages" src="https://img.shields.io/badge/Website-GitHub%20Pages-487A6C?style=flat-square">
   <img alt="Installer internal only" src="https://img.shields.io/badge/Installer-Internal%20Only-8B6F43?style=flat-square">
 </p>
@@ -34,7 +34,7 @@
 
 **SKY Workbench** is an independent, local-first scientific workflow assistant for COMSOL. This repository hosts its public-facing website and documentation—not the desktop application or its installer.
 
-> **Release status / 发行状态：** V2.0 源码和文档已公开；Windows Setup 目前仍是内部候选版，仅通过批准的内部渠道提供。本站没有公开 EXE 下载，也不提供在线 COMSOL 求解服务。
+> **Release status / 发行状态：** V3.0 净化源码和文档已公开（[v3.0.0 源码发行](https://github.com/lovesky514514-cmd/sky-workbench/releases/tag/v3.0.0)）；Windows Setup 仍是内部候选，仅通过批准的内部渠道提供。本站没有公开 EXE 下载，也不提供在线 COMSOL 求解服务。
 
 ## Preview / 界面预览
 
@@ -43,7 +43,7 @@
     <img src="assets/workbench-desktop-rc51.png" width="900" alt="SKY Workbench installed desktop interface, RC5.1">
   </a>
 </p>
-<p align="center"><sub>真实已安装桌面程序截图 · RC5.1（用于界面展示，不代表 V2.0 的完整功能验收）</sub></p>
+<p align="center"><sub>真实已安装桌面程序截图 · RC5.1（用于界面展示，不代表 V3.0 的完整功能验收）</sub></p>
 
 <table>
   <tr>
@@ -53,14 +53,14 @@
   </tr>
 </table>
 
-截图来自既有 RC5.1 安装版记录，未经修图或伪造科学结果；不能据此认定任意物理场、V2.0 安装程序或科学结论已经通过验收。
+截图来自既有 RC5.1 安装版记录，未经修图或伪造科学结果；不能据此认定任意物理场、V3.0 安装程序或科学结论已经通过验收。
 
 ## Explore / 从这里开始
 
 | 页面 | 内容 |
 | --- | --- |
 | [产品首页](https://lovesky514514-cmd.github.io/scientific-workbench-beta/) | 项目定位、科学工作流、界面展示与发行说明 |
-| [文档中心](https://lovesky514514-cmd.github.io/scientific-workbench-beta/docs/) | 环境要求、首次启动、任务与计划、COMSOL、证据及故障处理 |
+| [V3.0 文档中心](https://lovesky514514-cmd.github.io/scientific-workbench-beta/docs/) | 环境要求、首次启动、任务与计划、COMSOL、证据及故障处理 |
 | [技术知识库](https://lovesky514514-cmd.github.io/scientific-workbench-beta/knowledge-base/) | 科学建模、COMSOL、数值方法、代码实现与技术问答 |
 | [软件源码](https://github.com/lovesky514514-cmd/sky-workbench) | React / Tauri / Python / Java Bridge 实现及工程文档 |
 | [问题反馈](mailto:swbtest001@yeah.net) | 内部测试咨询与脱敏问题反馈 |
@@ -78,7 +78,7 @@
 .
 ├── index.html          # 产品首页
 ├── docs/
-│   └── index.html      # 文档中心
+│   └── index.html      # V3.0 文档中心
 ├── assets/
 │   ├── brand-icon.png  # 品牌图标
 │   ├── site.css        # 站点样式
@@ -121,7 +121,7 @@ This public website repository does **not** grant a general license to copy, mod
 
 ## Important notes / 使用边界
 
-真实 COMSOL 建模与求解要求用户自行安装合法的 COMSOL 6.3 软件并持有有效许可。SKY Workbench 是独立第三方项目，不隶属于 COMSOL AB，也不包含 COMSOL、许可文件、私有模型或公开下载的 Windows 安装程序。命令执行成功不等于模型状态已验证，更不等于科学结论通过验证。
+真实 COMSOL 建模与求解要求用户自行安装并合法授权适用的 COMSOL 版本及模块。6.3 有历史真实测试记录；V3.0 安装包与其他版本仍需逐项验收。SKY Workbench 是独立第三方项目，不隶属于 COMSOL AB，也不包含 COMSOL、许可文件、私有模型或公开下载的 Windows 安装程序。命令执行成功不等于模型状态已验证，更不等于科学结论通过验证。
 
 网站内容用于介绍软件和提供文档；功能是否可用，以实际环境、受支持的工作流与逐次运行的证据为准。
 

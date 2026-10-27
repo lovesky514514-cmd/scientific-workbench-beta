@@ -40,16 +40,18 @@ test('the staging site has no beta distribution or live-service entry point', ()
   assert.doesNotMatch(page('docs/index.html'), /<script\b/i)
 })
 
-test('V2 source and help links remain separate from internal installer distribution', () => {
+test('V3 source and help links remain separate from internal installer distribution', () => {
   const home = page('index.html')
   const docs = page('docs/index.html')
   const repository = 'https://github.com/lovesky514514-cmd/sky-workbench'
-  assert.match(home, /SKY Workbench V2\.0/)
+  assert.match(home, /SKY Workbench V3\.0/)
   assert.match(home, /class="button source" href="https:\/\/github\.com\/lovesky514514-cmd\/sky-workbench"/)
   assert.match(docs, /当前候选版<strong>不提供通用的任意 MPH 导入后修改流程<\/strong>/)
-  assert.match(docs, /“停止”结束当前 attempt，不是可继续的暂停/)
-  assert.match(docs, /Windows Setup 仅内部提供，本站不提供 EXE 下载/)
+  assert.match(docs, /「停止」结束当前 attempt，不是可继续的暂停/)
+  assert.match(docs, /Windows Setup 仍是内部候选，本站不提供 EXE 下载/)
   assert.ok(home.includes(repository) && docs.includes(repository))
+  assert.match(home + docs, /releases\/tag\/v3\.0\.0/)
+  assert.doesNotMatch(home + docs, /SKY Workbench V2\.0|DOCUMENTATION \/ V2\.0/)
   assert.doesNotMatch(home + docs, /github\.com\/[^"\s]+\/releases\/download\/|\.exe["']/i)
 })
 
