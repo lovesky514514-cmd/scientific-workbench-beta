@@ -29,5 +29,19 @@ jobs:
             "https://api.github.com/repos/$GITHUB_REPOSITORY/pages/deployments/8336be0e5d5e81c9ec2ee6dc0b8bb78f8febb6a7/cancel")
           case "$status" in
             200|202|204) echo "Stale Pages deployment cancellation accepted." ;;
+            400)
+              grep -q "as it's finished" "$RUNNER_TEMP/pages-recovery.json" || { cat "$RUNNER_TEMP/pages-recovery.json"; exit 1; }
+              echo "Prior deployment is already finished."
+              ;;
             *) cat "$RUNNER_TEMP/pages-recovery.json"; exit 1 ;;
           esac
+      - name: Request a fresh Pages build
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          curl --silent --show-error --fail-with-body \
+            --request POST \
+            --header "Authorization: Bearer $GH_TOKEN" \
+            --header "Accept: application/vnd.github+json" \
+            "https://api.github.com/repos/$GITHUB_REPOSITORY/pages/builds"
