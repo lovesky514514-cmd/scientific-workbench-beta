@@ -1,0 +1,33 @@
+name: Recover Pages deployment
+
+on:
+  push:
+    branches: [main]
+    paths: [.github/workflows/recover-pages.yml]
+  workflow_dispatch:
+
+permissions:
+  pages: write
+
+jobs:
+  recover:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      # Pages reported this already-completed revision as still deploying.
+      - name: Cancel the stale Pages deployment
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          status=$(curl --silent --show-error \
+            --request POST \
+            --header "Authorization: Bearer $GH_TOKEN" \
+            --header "Accept: application/vnd.github+json" \
+            --output "$RUNNER_TEMP/pages-recovery.json" \
+            --write-out "%{http_code}" \
+            "https://api.github.com/repos/$GITHUB_REPOSITORY/pages/deployments/8336be0e5d5e81c9ec2ee6dc0b8bb78f8febb6a7/cancel")
+          case "$status" in
+            200|202|204) echo "Stale Pages deployment cancellation accepted." ;;
+            *) cat "$RUNNER_TEMP/pages-recovery.json"; exit 1 ;;
+          esac
