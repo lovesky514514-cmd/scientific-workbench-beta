@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "product": "SKY Workbench",
+  "version": "3.1.0",
+  "updated": "2026-11-01",
+  "tests": {
+    "backend_passed": 1415,
+    "backend_skipped_historical": 14,
+    "frontend_passed": 108,
+    "frontend_build_passed": true
+  },
+  "live_llm": {
+    "provider": "DeepSeek API",
+    "model": "deepseek-flash",
+    "vague_prompts": 25,
+    "explicit_prompts": 25,
+    "additional_original_prompt": 1,
+    "structured_drafts": 51,
+    "requests": 52,
+    "metric": "Structured draft generation coverage; not scientific modeling accuracy"
+  },
+  "frozen_runtime": {
+    "deepseek_protocol_tests_passed": 4,
+    "comsol_version": "6.3",
+    "completed_workflows": [
+      "heat_transfer_3d_cooling",
+      "heat_transfer_2d_stationary",
+      "solid_mechanics_uniaxial_bar"
+    ],
+    "wrong_token_status": 401,
+    "graceful_shutdown_passed": true,
+    "sha256": "cb7d424ddfba96581dd9b26a77338bf33467213abdef845ff3b15065961f3ecb"
+  },
+  "additional_engines": {
+    "LAMMPS": "LJ reduced fixture executed and collected; scientific review pending",
+    "Mathics3": "Two manually transcribed fixtures and frozen numeric evaluation passed",
+    "MATLAB": "Real solver skipped: software unavailable",
+    "VASP": "Real solver skipped: software unavailable",
+    "Materials Studio": "Real solver skipped: software unavailable"
+  },
+  "boundaries": [
+    "Draft generation is distinct from execution and scientific validation.",
+    "These COMSOL checks validate specified equations and numerical consistency, not measured material calibration.",
+    "Complex physics and larger-model performance require separate validation.",
+    "Target computer desktop installation, upgrade and UI acceptance remain pending."
+  ],
+  "desktop_installer_code_signed": false,
+  "checked_source_sha256": "9d22534a5b4ca0b7a35af27693df42a26a7ca0e5a005dce161996ed87ef25a9f",
+  "runtime_source_snapshot_sha256": "6653292c9e73995a2928241e957fc9c34d6acd920826efcc66a18928cc41eff7"
+}

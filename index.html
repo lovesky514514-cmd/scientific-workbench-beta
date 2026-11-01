@@ -4,10 +4,10 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#f5f2eb">
-  <meta name="description" content="SKY Workbench 3.0：自然语言计划、逐项环境扫描、COMSOL 模型读回与证据审阅。3.0 源码已公开，Windows 安装包仍为内部候选。">
+  <meta name="description" content="SKY Workbench 3.1：面向有限元、分子动力学、第一性原理与数学计算的科学工作台。自然语言建模、AI 补参审核、受控执行与结果证据。">
   <meta name="referrer" content="strict-origin-when-cross-origin">
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self'; script-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
-  <title>SKY Workbench V3.0 · 产品与文档</title>
+  <title>SKY Workbench V3.1 · 产品与文档</title>
   <link rel="icon" href="./assets/brand-icon.png">
   <link rel="stylesheet" href="./assets/site.css">
   <script src="./assets/gallery.js" defer></script>
@@ -23,9 +23,9 @@
       <div class="hero-copy">
         <p class="eyebrow"><span class="status-dot"></span> LOCAL-FIRST SCIENTIFIC WORKSPACE</p>
         <h1>让建模过程<br><em>有迹可循。</em></h1>
-        <p class="lead">SKY Workbench V3.0 把自然语言任务、逐项环境扫描、科学建模计划、COMSOL 模型读回和可审阅证据放在同一工作空间。它是独立第三方工具，不能替代 COMSOL 许可、求解器判断或研究者的科学审核。</p>
+        <p class="lead">SKY Workbench V3.1 将自然语言建模、候选参数审核、仿真任务和结果证据放在同一工作空间。面向有限元、分子动力学、第一性原理与数学计算，让不完整的想法也能逐步形成可审阅的模型。</p>
         <div class="hero-actions"><a class="button primary" href="./docs/">阅读使用文档 <span aria-hidden="true">↗</span></a><a class="button source" href="https://github.com/lovesky514514-cmd/sky-workbench" target="_blank" rel="noopener noreferrer">GitHub 源码 <span aria-hidden="true">↗</span></a></div>
-        <p class="release-note"><strong>3.0 发行状态</strong> <a href="https://github.com/lovesky514514-cmd/sky-workbench/releases/tag/v3.0.0" target="_blank" rel="noopener noreferrer">v3.0.0 源码</a>与使用文档已公开；Windows EXE 仍是内部候选，本站没有公开下载。下方为 RC5.1 历史实机截图，并非 V3.0 画面或当前科学验收证据。内部测试咨询：<a href="mailto:swbtest001@yeah.net">swbtest001@yeah.net</a>。</p>
+        <p class="release-note"><strong>V3.1 版本更新 · 2026-11-01</strong>新增真实 DeepSeek 建模验证，完善模糊指令补参、单位检查与结果核验。<a href="./releases/3.1/">查看 3.1 更新说明与验证范围</a>。界面轮播保留 RC5.1 历史实机截图，用于展示操作方式；当前版本的功能与验证记录见文档。</p>
       </div>
       <figure class="hero-visual" aria-label="实际安装版 Scientific Workbench 桌面界面截图">
         <div class="hero-gallery" data-gallery>
@@ -52,14 +52,14 @@
     <section class="rule-section wrap" id="workflow">
       <div class="section-intro"><p class="eyebrow">WORKFLOW</p><h2>从请求到可核查的结果</h2><p>用户始终保留计划确认、运行中干预和结果复核权。每一步是否可执行，取决于实际环境与证据。</p></div>
       <ol class="workflow-list">
-        <li><span>01</span><div><h3>提出任务</h3><p>输入目标、几何、材料与边界条件；缺少必需信息时明确提示，不猜测物理量。</p></div></li>
-        <li><span>02</span><div><h3>审阅计划</h3><p>检查参数单位、所选 Physics、边界映射和求解设置。人工批准表示允许执行，不等于科学验证。</p></div></li>
-        <li><span>03</span><div><h3>本地执行</h3><p>在具备许可的 COMSOL 安装上构建与求解，按当前 run/attempt 记录模型读回、进度和诊断。</p></div></li>
+        <li><span>01</span><div><h3>提出任务</h3><p>描述研究目标；信息不足时继续生成草案，由 AI 提出带单位、理由和适用条件的候选参数，供你选择或修改。</p></div></li>
+        <li><span>02</span><div><h3>审阅计划</h3><p>审核已知条件、候选参数、物理机制与边界设置。通过预检后，只有显式触发 RUN 才开始实际求解。</p></div></li>
+        <li><span>03</span><div><h3>本地执行</h3><p>在本机已安装且具备相应授权的软件上执行受支持任务，记录进度、模型读回与诊断。各引擎按自己的能力范围运行。</p></div></li>
         <li><span>04</span><div><h3>核查证据</h3><p>分别报告命令执行、模型状态和科学验证；缺失证据应为不可验证，而非“成功”。</p></div></li>
       </ol>
     </section>
-    <section class="features wrap" aria-labelledby="features-title"><div class="section-intro"><p class="eyebrow">CAPABILITIES</p><h2 id="features-title">围绕科学工作，而非聊天窗口</h2></div><div class="feature-lines"><article><span>01 / MODEL</span><h3>环境扫描与模型工作区</h3><p>逐项显示软件检测进度与发现的 COMSOL 版本；导入 MPH 保留来源身份。发现安装不等于 Bridge 连接或科学验证。</p></article><article><span>02 / CONTROL</span><h3>可选 AI 与受控执行</h3><p>可配置云端 AI 或本地 Ollama；执行中的暂停、取消与恢复保持明确状态。外部软件脚本输出不自动成为 COMSOL 科学证据。</p></article><article><span>03 / EVIDENCE</span><h3>结果与模型卡</h3><p>图像、模型文件、哈希、求解诊断及科学检查分开呈现，帮助研究者追溯结论。</p></article></div></section>
-    <section class="docs-callout wrap"><div><p class="eyebrow">DOCUMENTATION</p><h2>使用之前，先了解边界。</h2><p>文档覆盖环境要求、COMSOL 集成、MPH 导入、证据语义和故障诊断。公开源码不包含 Windows 安装包。</p></div><a class="button light" href="./docs/">进入文档中心 <span aria-hidden="true">→</span></a></section>
+    <section class="features wrap" aria-labelledby="features-title"><div class="section-intro"><p class="eyebrow">CAPABILITIES</p><h2 id="features-title">围绕科学工作，而非聊天窗口</h2></div><div class="feature-lines"><article><span>01 / MODEL</span><h3>四类计算，一个工作空间</h3><p>组织 COMSOL、MATLAB、VASP、Materials Studio、LAMMPS 与 Mathics3 的相关任务。分别呈现安装检测、接口能力与真实运行证据。</p></article><article><span>02 / CONTROL</span><h3>真实 AI 与可审阅补参</h3><p>DeepSeek 已完成真实推理与建模流程验证，也可配置其他云服务或本地模型。AI 建议与用户事实分开保存，修改计划后重新审核。</p></article><article><span>03 / EVIDENCE</span><h3>结果与模型卡</h3><p>图像、模型文件、哈希、求解诊断及科学检查分开呈现，帮助研究者追溯结论。</p></article></div></section>
+    <section class="docs-callout wrap"><div><p class="eyebrow">DOCUMENTATION</p><h2>使用之前，先了解边界。</h2><p>文档覆盖软件配置、模糊指令补参、多引擎能力、结果证据及故障诊断。3.1 更新说明列出已验证案例与仍需验证的范围。</p></div><a class="button light" href="./docs/">进入文档中心 <span aria-hidden="true">→</span></a></section>
   </main>
   <footer class="site-footer wrap"><span>SKY Workbench · Independent third-party software</span><span>SuKoYa · <a href="mailto:swbtest001@yeah.net">swbtest001@yeah.net</a></span><span>COMSOL 是其权利人的商标；本项目不提供 COMSOL 软件或许可证。</span></footer>
 </body>

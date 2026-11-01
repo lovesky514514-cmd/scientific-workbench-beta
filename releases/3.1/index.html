@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f5f2eb">
+  <meta name="description" content="SKY Workbench 3.1 版本更新：真实 DeepSeek、可审阅的候选补参、多引擎能力、单位与数值校验。">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self'; script-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
+  <title>3.1 版本更新 · SKY Workbench</title>
+  <link rel="icon" href="../../assets/brand-icon.png">
+  <link rel="stylesheet" href="../../assets/site.css">
+</head>
+<body class="docs-page">
+  <a class="skip" href="#main">跳至正文</a>
+  <header class="site-header"><a class="brand" href="../../"><img src="../../assets/brand-icon.png" alt="" width="38" height="38"><span>SKY Workbench</span></a><nav aria-label="主导航"><a href="../../">产品</a><a href="../../docs/">文档中心</a><a href="../../knowledge-base/">知识库</a><a class="active" href="./">版本更新</a><a href="https://github.com/lovesky514514-cmd/sky-workbench" target="_blank" rel="noopener noreferrer">GitHub</a></nav></header>
+  <div class="docs-shell">
+    <aside class="docs-sidebar" aria-label="更新章节"><p class="sidebar-title">RELEASE / 3.1.0</p><nav><a href="#updates">本次更新</a><a href="#example">从模糊描述开始</a><a href="#verification">已完成验证</a><a href="#scope">当前支持范围</a><a href="#get-version">获取版本</a></nav></aside>
+    <main class="docs-main" id="main">
+      <p class="eyebrow">SKY WORKBENCH / 2026-11-01</p>
+      <h1>3.1 版本更新</h1>
+      <p class="docs-lead">在 3.0 基础上，让不完整的建模想法更容易形成可审阅的方案，并把真实 AI、受控执行与结果证据连接起来。</p>
+      <section id="updates"><p class="chapter">01 / 更新内容</p><h2>从草案到求解，步骤更清楚</h2><ul><li><strong>真实云模型接入：</strong>DeepSeek 完成文本、流式、JSON 和 ScientificPlan 四项真实推理检查，完善云端响应协议及冻结运行时连接。</li><li><strong>可审阅的候选补参：</strong>信息不足时继续生成模型草案，AI 提出带单位、理由和适用条件的候选值。建议不会覆盖用户已给的事实，也不会自动成为已验证数据。</li><li><strong>单位与授权检查：</strong>执行前检查单位和参数使用授权；计划修改后重新审核，只有显式 RUN 才开始求解。截断或空白 JSON 最多向同一云服务、同一模型重试一次。</li><li><strong>数值检查改进：</strong>铁块冷却保留对流与灰体辐射。用户结果输出和内部能量校验分别采样，稀疏输出不再直接承担能量积分；三维资源预估按实际执行器识别。</li><li><strong>多引擎任务组织：</strong>围绕 COMSOL、MATLAB、VASP、Materials Studio、LAMMPS 与 Mathics3 展示对应能力和状态，分别判断检测、输入、运行与科学结果。</li></ul></section>
+      <section id="example"><p class="chapter">02 / 使用方式</p><h2>一句话，也可以开始建模</h2><div class="note"><strong>“我想做一个3x3x20mm的烧红的铁块，现在想分析热变化。”</strong><p>先保留已知尺寸，再建议初温、环境温度、热物性、换热系数、辐射率和时长。用户审核这些值及建模选择，通过预检后显式 RUN，最后检查温度历史、模型读回与数值证据。</p></div><p>“烧红”没有唯一的数值温度，AI 给出的值属于可修改假设。恒定材料属性、空气冷却和无支撑接触等条件同样需要审核，不能从一句描述中假装得到实测材料数据。</p></section>
+      <section id="verification"><p class="chapter">03 / 验证记录</p><h2>本次做了哪些验证</h2><dl><dt>真实 AI 草案</dt><dd>25 条模糊、25 条明确指令，加上原始铁块描述，共 51 份结构化草案来自实际 DeepSeek；共 52 次请求，包含一次 schema 修复。本批没有错误执行器绑定，PLAN 没有启动求解。</dd><dt>冻结运行时实际求解</dt><dd>COMSOL 6.3 完成明确尺寸铁块的对流与灰体辐射冷却、二维稳态导热、静力单轴杆三个案例，回读、数值及证据契约检查通过；错误令牌拦截、正常退出和进程清理通过。</dd><dt>代码回归</dt><dd>后端 1415 项通过，14 项历史打包辅助测试跳过；前端 108 项通过，生产构建通过。</dd><dt>数学与原子模拟路径</dt><dd>Mathics3 的两个手工转写数学案例及冻结后端数值求值通过；LAMMPS 的 LJ reduced 基准完成执行、步数、日志和轨迹检查，科学结果仍需复核。</dd><dt>构建载荷</dt><dd>安装包内运行时哈希与受测文件一致，固定依赖、914 个许可声明文件及 8 条公开知识单元核对通过；没有打入用户密钥或商业求解器。</dd></dl><p><strong>结构化草案生成覆盖率不等于 AI 科学建模准确率。</strong>51 份草案和三个实际 COMSOL 求解属于不同批次、不同验证范围。<a href="./verification.json">查看机器可读的验证摘要与文件标识</a>。</p></section>
+      <section id="scope"><p class="chapter">04 / 能力范围</p><h2>按具体引擎和模型判断</h2><p>MATLAB、VASP、Materials Studio 本轮缺少可用环境，真实求解按缺失软件跳过，未记为成功。LAMMPS 水 TIP4P、铜 EAM 等需要对应适配；Mathics3 数学执行也不等于自动完成任意物理建模。</p><p>接触、多域耦合、复杂材料、反应或交叉扩散等需分别建立执行器与验收。一次 AI 建议的 10 cm 铁块在 600 s 测试预算内尚未完成，其尺度性能未认证。数值一致性检查不替代材料实验标定。目标电脑安装、重启、升级与实际界面交互仍需验证。</p></section>
+      <section id="get-version"><p class="chapter">05 / 版本获取</p><h2>源码、文档与 Windows 版本</h2><p><a href="https://github.com/lovesky514514-cmd/sky-workbench" target="_blank" rel="noopener noreferrer">查看软件源码</a>，或进入<a href="https://github.com/lovesky514514-cmd/sky-workbench/releases" target="_blank" rel="noopener noreferrer">公开发行记录</a>查看已发布标签。3.1 Windows x64 安装包已构建，官网暂不托管安装文件；获取版本请联系 <a href="mailto:swbtest001@yeah.net">swbtest001@yeah.net</a>。当前安装包尚未代码签名，软件依赖与使用方式见<a href="../../docs/">文档中心</a>。</p></section>
+      <nav class="docs-next" aria-label="章节导航"><a href="../../docs/">阅读使用文档 →</a><a href="../../">返回产品首页 →</a></nav>
+    </main>
+    <aside class="docs-toc" aria-label="本页目录"><p>本页目录</p><a href="#updates">版本更新</a><a href="#verification">验证记录</a><a href="#scope">能力范围</a><a href="#get-version">获取版本</a></aside>
+  </div>
+  <footer class="site-footer docs-footer"><span>SKY Workbench · Independent third-party software</span><span>SuKoYa · <a href="mailto:swbtest001@yeah.net">swbtest001@yeah.net</a></span></footer>
+</body>
+</html>

@@ -19,7 +19,7 @@ test('product and docs pages are self-contained and linked', () => {
   }
   assert.ok(existsSync(resolve(root, 'assets/site.css')))
   assert.ok(existsSync(resolve(root, 'assets/brand-icon.png')))
-  for (const source of ['index.html', 'docs/index.html']) {
+  for (const source of ['index.html', 'docs/index.html', 'releases/3.1/index.html']) {
     const base = pathToFileURL(resolve(root, source))
     for (const [, reference] of page(source).matchAll(/(?:href|src)="([^"]+)"/g)) {
       if (/^(?:https?:|mailto:|#)/i.test(reference)) continue
@@ -40,15 +40,16 @@ test('the staging site has no beta distribution or live-service entry point', ()
   assert.doesNotMatch(page('docs/index.html'), /<script\b/i)
 })
 
-test('V3 source and help links remain separate from internal installer distribution', () => {
+test('V3.1 product information preserves honest source and download links', () => {
   const home = page('index.html')
   const docs = page('docs/index.html')
   const repository = 'https://github.com/lovesky514514-cmd/sky-workbench'
-  assert.match(home, /SKY Workbench V3\.0/)
+  assert.match(home, /SKY Workbench V3\.1/)
   assert.match(home, /class="button source" href="https:\/\/github\.com\/lovesky514514-cmd\/sky-workbench"/)
-  assert.match(docs, /当前候选版<strong>不提供通用的任意 MPH 导入后修改流程<\/strong>/)
+  assert.match(docs, /当前版本<strong>不提供通用的任意 MPH 导入后修改流程<\/strong>/)
   assert.match(docs, /「停止」结束当前 attempt，不是可继续的暂停/)
-  assert.match(docs, /Windows Setup 仍是内部候选，本站不提供 EXE 下载/)
+  assert.match(docs, /当前版本为 <strong>SKY Workbench 3\.1\.0<\/strong>/)
+  assert.match(docs, /官网暂不托管安装文件/)
   assert.ok(home.includes(repository) && docs.includes(repository))
   assert.match(home + docs, /releases\/tag\/v3\.0\.0/)
   assert.doesNotMatch(home + docs, /SKY Workbench V2\.0|DOCUMENTATION \/ V2\.0/)
@@ -76,4 +77,59 @@ test('hero rotates only unmodified installed-app screenshots, not a simulated mo
   assert.match(home, /<div class="gallery-frame">[\s\S]*?<\/div>\s*<div class="gallery-toolbar"/)
   assert.match(css, /\.gallery-toolbar\{display:none/)
   assert.match(page('assets/gallery.js'), /}, 5000\)/)
+})
+
+
+test('current product pages use 3.1 version wording and link the update notes', () => {
+  for (const name of ['index.html', 'docs/index.html', 'releases/3.1/index.html', 'README.md']) {
+    const content = page(name)
+    assert.match(content, /3\.1/)
+    assert.doesNotMatch(content, /实验室|内测|内部候选|Lab Preview/i)
+  }
+  assert.match(page('index.html'), /href="\.\/releases\/3.1\/"/)
+  assert.match(page('docs/index.html'), /href="\.\.\/releases\/3.1\/"/)
+  assert.match(page('releases/3.1/index.html'), /href="\.\/verification\.json"/)
+  assert.doesNotMatch(page('index.html') + page('docs/index.html'), /releases\/tag\/v3\.1\.0/)
+})
+
+test('release evidence separates drafts, solver checks and unavailable engines', () => {
+  const data = JSON.parse(page('releases/3.1/verification.json'))
+  assert.equal(data.version, '3.1.0')
+  assert.equal(data.live_llm.structured_drafts,
+    data.live_llm.vague_prompts + data.live_llm.explicit_prompts + data.live_llm.additional_original_prompt)
+  assert.equal(data.frozen_runtime.completed_workflows.length, 3)
+  assert.match(data.live_llm.metric, /not scientific modeling accuracy/)
+  for (const engine of ['MATLAB', 'VASP', 'Materials Studio']) {
+    assert.match(data.additional_engines[engine], /skipped: software unavailable/)
+  }
+  assert.match(data.additional_engines.LAMMPS, /scientific review pending/)
+  const notes = page('releases/3.1/index.html')
+  assert.match(notes, /结构化草案生成覆盖率不等于 AI 科学建模准确率/)
+  assert.match(notes, /缺少可用环境/)
+  assert.match(notes, /目标电脑安装、重启、升级与实际界面交互仍需验证/)
+})
+
+test('knowledge base current-version entries agree with the release notes', () => {
+  const html = page('knowledge-base/index.html')
+  const marker = /\b(?:const|let|var)\s+KB\s*=\s*/.exec(html)
+  assert.ok(marker)
+  const value = html.slice(marker.index + marker[0].length)
+  // The array ends immediately before the following JavaScript statement.
+  let depth = 0, quoted = false, escaped = false, end = 0
+  for (; end < value.length; end++) {
+    const char = value[end]
+    if (quoted) {
+      if (escaped) escaped = false
+      else if (char === '\\') escaped = true
+      else if (char === '"') quoted = false
+    } else if (char === '"') quoted = true
+    else if (char === '[' || char === '{') depth++
+    else if (char === ']' || char === '}') { if (--depth === 0) break }
+  }
+  const entries = JSON.parse(value.slice(0, end + 1))
+  assert.equal(new Set(entries.map(x => x.id)).size, entries.length)
+  assert.match(entries.find(x => x.id === 'k002').short, /3\.1\.0/)
+  assert.match(entries.find(x => x.id === 'k005').short, /三个实际求解案例/)
+  assert.doesNotMatch(entries.find(x => x.id === 'k0344').title, /V3\.0/)
+  assert.match(html, /更新日期：2026-11-01/)
 })
