@@ -46,5 +46,6 @@
   ],
   "desktop_installer_code_signed": false,
   "checked_source_sha256": "9d22534a5b4ca0b7a35af27693df42a26a7ca0e5a005dce161996ed87ef25a9f",
-  "runtime_source_snapshot_sha256": "6653292c9e73995a2928241e957fc9c34d6acd920826efcc66a18928cc41eff7"
+  "runtime_source_snapshot_sha256": "6653292c9e73995a2928241e957fc9c34d6acd920826efcc66a18928cc41eff7",
+  "installer_metadata": "installer.json"
 }

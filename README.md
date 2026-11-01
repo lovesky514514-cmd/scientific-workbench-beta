@@ -15,7 +15,7 @@ SKY Workbench 3.1 面向有限元、分子动力学、第一性原理与数学�
 
 后端 1415 项测试通过、14 项历史打包辅助测试跳过，前端 108 项通过。MATLAB、VASP、Materials Studio 本轮缺少实际环境，真实计算尚未验证；复杂物理和目标电脑安装需分别验收。细节与公开的结构化摘要见 [版本说明](releases/3.1/index.html) 与 [verification.json](releases/3.1/verification.json)。
 
-Windows 安装包已构建，官网暂不托管安装文件；获取方式见文档。软件仓库的源码标签与官网产品版本分别查看，既有 v3.0.0 标签保留历史含义。
+最终 Windows 3.1.0 安装包已构建，[版本页](releases/3.1/index.html#get-version)提供获取说明、文件名与 SHA-256，[installer.json](releases/3.1/installer.json)提供机器可读的安装包信息。软件仓库的源码标签与官网产品版本分别查看，既有 v3.0.0 标签保留历史含义。
 
 ## 网站维护
 

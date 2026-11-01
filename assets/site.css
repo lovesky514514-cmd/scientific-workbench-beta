@@ -26,3 +26,6 @@
 .gallery-arrow:focus-visible,.gallery-dot:focus-visible,.gallery-pause:focus-visible{outline:2px solid var(--deep);outline-offset:2px}
 /* Keep the source link visible without making it compete with the primary docs action. */
 .button.source{border:1px solid var(--deep);color:var(--deep);background:transparent}.button.source:hover{background:var(--wash)}
+
+/* Long file identifiers must fit narrow documentation columns. */
+.checksum{display:block;overflow-wrap:anywhere;word-break:break-all;font-size:12px}
