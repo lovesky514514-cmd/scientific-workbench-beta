@@ -19,7 +19,7 @@ test('product and docs pages are self-contained and linked', () => {
   }
   assert.ok(existsSync(resolve(root, 'assets/site.css')))
   assert.ok(existsSync(resolve(root, 'assets/brand-icon.png')))
-  for (const source of ['index.html', 'docs/index.html', 'releases/3.1/index.html']) {
+  for (const source of ['index.html', 'docs/index.html', 'releases/3.1/index.html', 'releases/4.0/index.html']) {
     const base = pathToFileURL(resolve(root, source))
     for (const [, reference] of page(source).matchAll(/(?:href|src)="([^"]+)"/g)) {
       if (/^(?:https?:|mailto:|#)/i.test(reference)) continue
@@ -27,6 +27,15 @@ test('product and docs pages are self-contained and linked', () => {
       assert.ok(existsSync(target), `${source} has a missing local asset: ${reference}`)
     }
   }
+})
+
+test('the 4.0 candidate keeps verified runs and installer availability explicit', () => {
+  assert.match(page('index.html'), /href="\.\/releases\/4\.0\/"/)
+  const candidate = page('releases/4.0/index.html')
+  assert.match(candidate, /公开 Windows 安装包待发布/)
+  assert.match(candidate, /固定版 WebView2/)
+  assert.match(candidate, /内置 Evergreen WebView2 仍需/)
+  assert.doesNotMatch(candidate, /href="[^"]+\.exe"/i)
 })
 
 test('the staging site has no beta distribution or live-service entry point', () => {

@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="SKY Workbench 4.0.0 发布候选的功能、实测结果与发布状态。">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
+  <title>SKY Workbench 4.0.0 · 发布候选</title>
+  <link rel="icon" href="../../assets/brand-icon.png">
+  <link rel="stylesheet" href="../../assets/site.css">
+</head>
+<body>
+  <a class="skip" href="#main">跳至正文</a>
+  <header class="site-header">
+    <a class="brand" href="../../"><img src="../../assets/brand-icon.png" alt="" width="38" height="38"><span>SKY Workbench</span></a>
+    <nav aria-label="主导航">
+      <a href="../../">产品</a>
+      <a href="../../docs/">文档中心</a>
+      <a href="../3.1/">Windows 3.1</a>
+      <a href="https://github.com/lovesky514514-cmd/sky-workbench">GitHub</a>
+    </nav>
+  </header>
+  <main class="wrap" id="main">
+    <section class="rule-section">
+      <h1>SKY Workbench 4.0.0 发布候选</h1>
+      <p>4.0 由科研总控协调动态专家、计划审批和证据核查。COMSOL 模型视图可读取活动运行的网格检查点，结果视图可查看已审核 Heat 的三维温度场。</p>
+    </section>
+    <section class="rule-section" id="verified">
+      <h2>已通过的专项验收</h2>
+      <ul>
+        <li>一项 COMSOL 6.3 三维瞬态冷却，完成四次内部求解和 16 项独立物理检查。两档 Windows 窗口均显示已审核温度场。</li>
+        <li>在具备可用 WebView2 的 Windows 上完成 3.1→4.0 升级、安装、启动和卸载，项目数据通过完整性核对。</li>
+        <li>禁网 Windows Sandbox 临时加载微软签名的固定版 WebView2 后完成安装、原生启动、Python 最小算例与卸载。算例输出 385。</li>
+      </ul>
+    </section>
+    <section class="rule-section" id="status">
+      <h2>发布状态</h2>
+      <p>公开 Windows 安装包待发布。内置 Evergreen WebView2 仍需在干净 Windows 环境完成离线安装验收，交互升级保护和公开分发审核也在收尾。</p>
+      <p>现有 Windows 版本说明与获取方式仍见 <a href="../3.1/">3.1 页面</a>。</p>
+    </section>
+  </main>
+</body>
+</html>

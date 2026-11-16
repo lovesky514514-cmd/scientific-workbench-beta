@@ -6,6 +6,7 @@ SKY Workbench 3.1 面向有限元、分子动力学、第一性原理与数学�
 
 - [官方网站](https://lovesky514514-cmd.github.io/scientific-workbench-beta/)
 - [3.1 版本更新与验证记录](https://lovesky514514-cmd.github.io/scientific-workbench-beta/releases/3.1/)
+- [4.0 发布候选进展](https://lovesky514514-cmd.github.io/scientific-workbench-beta/releases/4.0/)
 - [使用文档](https://lovesky514514-cmd.github.io/scientific-workbench-beta/docs/) · [知识库](https://lovesky514514-cmd.github.io/scientific-workbench-beta/knowledge-base/)
 - [软件源码](https://github.com/lovesky514514-cmd/sky-workbench) · [公开发行记录](https://github.com/lovesky514514-cmd/sky-workbench/releases)
 
