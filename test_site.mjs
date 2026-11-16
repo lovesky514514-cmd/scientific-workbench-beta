@@ -34,6 +34,17 @@ test('the 4.0 source release keeps verified runs and installer availability expl
   assert.match(home, /class="button primary" href="\.\/releases\/4\.0\/"/)
   assert.match(home, /4\.0\.0 源码已发布/)
   const release = page('releases/4.0/index.html')
+  const previous = page('releases/3.1/index.html')
+  const sections = (html) => [...html.matchAll(/<section id="([^"]+)"/g)].map((match) => match[1])
+  assert.deepEqual(sections(release), sections(previous))
+  const classes = new Set([...release.matchAll(/class="([^"]+)"/g)].flatMap((match) => match[1].split(/\s+/)))
+  for (const layout of ['docs-page', 'docs-shell', 'docs-sidebar', 'docs-main', 'docs-toc', 'docs-footer']) {
+    assert.ok(classes.has(layout), 'Missing release layout: ' + layout)
+  }
+  for (const section of sections(previous)) {
+    assert.ok(release.includes('href="#' + section + '"'), 'Missing release navigation: ' + section)
+  }
+  assert.match(release, /href="\.\.\/3\.1\/">3\.1 版本更新/)
   assert.match(release, /Windows 安装包仅供内部部署和验收/)
   assert.match(release, /固定版 WebView2/)
   assert.match(release, /内置 Evergreen WebView2.*仍需完成离线安装实测/)

@@ -3,42 +3,81 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="SKY Workbench 4.0.0 源码发布、实测范围与 Windows 内部验收。">
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
-  <title>SKY Workbench 4.0.0 · 源码版</title>
+  <meta name="theme-color" content="#f5f2eb">
+  <meta name="description" content="SKY Workbench 4.0 版本更新：科研总控、动态专家协作、COMSOL 三维网格与温度场、独立验证。">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self'; script-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
+  <title>4.0 版本更新 · SKY Workbench</title>
   <link rel="icon" href="../../assets/brand-icon.png">
   <link rel="stylesheet" href="../../assets/site.css">
 </head>
-<body>
+<body class="docs-page">
   <a class="skip" href="#main">跳至正文</a>
-  <header class="site-header">
-    <a class="brand" href="../../"><img src="../../assets/brand-icon.png" alt="" width="38" height="38"><span>SKY Workbench</span></a>
-    <nav aria-label="主导航">
-      <a href="../../">产品</a>
-      <a href="../../docs/">文档中心</a>
-      <a href="../3.1/">Windows 3.1</a>
-      <a href="https://github.com/lovesky514514-cmd/sky-workbench">GitHub</a>
-    </nav>
-  </header>
-  <main class="wrap" id="main">
-    <section class="rule-section">
-      <h1>SKY Workbench 4.0.0 源码版</h1>
-      <p>4.0 由科研总控协调动态专家、计划审批和证据核查。COMSOL 模型视图可读取活动运行的网格检查点，结果视图可查看已审核 Heat 的三维温度场。</p>
-      <p><a href="https://github.com/lovesky514514-cmd/sky-workbench/tree/main">查看 GitHub 源码</a> · <a href="https://github.com/lovesky514514-cmd/sky-workbench/blob/main/BUILDING.md">从源码构建</a></p>
-    </section>
-    <section class="rule-section" id="verified">
-      <h2>已通过的专项验收</h2>
-      <ul>
-        <li>一项 COMSOL 6.3 三维瞬态冷却，完成四次内部求解和 16 项独立物理检查。两档 Windows 窗口均显示已审核温度场。</li>
-        <li>在具备可用 WebView2 的 Windows 上完成 3.1→4.0 升级、安装、启动和卸载，项目数据通过完整性核对。</li>
-        <li>禁网 Windows Sandbox 临时加载微软签名的固定版 WebView2 后完成安装、原生启动、Python 最小算例与卸载。算例输出 385。</li>
-      </ul>
-    </section>
-    <section class="rule-section" id="status">
-      <h2>发布状态</h2>
-      <p>本次公开发布源码和文档。Windows 安装包仅供内部部署和验收。内置 Evergreen WebView2 在无现成运行时的 Windows 上，仍需完成离线安装实测。</p>
-      <p>上一版记录见 <a href="../3.1/">3.1 历史版本</a>。</p>
-    </section>
-  </main>
+  <header class="site-header"><a class="brand" href="../../"><img src="../../assets/brand-icon.png" alt="" width="38" height="38"><span>SKY Workbench</span></a><nav aria-label="主导航"><a href="../../">产品</a><a href="../../docs/">文档中心</a><a href="../../knowledge-base/">知识库</a><a class="active" href="./">版本更新</a><a href="https://github.com/lovesky514514-cmd/sky-workbench" target="_blank" rel="noopener noreferrer">GitHub</a></nav></header>
+  <div class="docs-shell">
+    <aside class="docs-sidebar" aria-label="更新章节">
+      <p class="sidebar-title">RELEASE / 4.0.0</p>
+      <nav><a href="#updates">本次更新</a><a href="#example">从模糊描述开始</a><a href="#verification">已完成验证</a><a href="#scope">当前支持范围</a><a href="#get-version">获取版本</a></nav>
+    </aside>
+    <main class="docs-main" id="main">
+      <p class="eyebrow">SKY WORKBENCH / 2026-11-16</p>
+      <h1>4.0 版本更新</h1>
+      <p class="docs-lead">在 3.1 的草案、审核和受控求解基础上，4.0 由科研总控组织专家协作，并把求解中的网格和完成后的科学证据带回工作台。</p>
+
+      <section id="updates">
+        <p class="chapter">01 / 更新内容</p>
+        <h2>从计划到结果，证据更容易核对</h2>
+        <ul>
+          <li><strong>科研总控与动态专家。</strong>总控根据任务和现有证据安排专家，遇到分歧可要求补证或定向返工。真实求解仍需用户审核计划并显式 RUN。</li>
+          <li><strong>原生 COMSOL 模型视图。</strong>Heat 求解期间查看当前尝试发布的网格。已审核的三维结果可查看温度色标、原始结果图和证据记录。</li>
+          <li><strong>独立科学审核。</strong>对照冻结模型、求解记录和数值检查核对结论。成果包包含模型、原始数据、图像、报告及文件校验清单。</li>
+          <li><strong>诊断与数据读回。</strong>恢复专家可识别不同来源的状态冲突并给出处理建议。大型科学数组经有界文件传输读回，宿主核对运行身份、大小和哈希。</li>
+        </ul>
+      </section>
+
+      <section id="example">
+        <p class="chapter">02 / 使用方式</p>
+        <h2>从一句铁块冷却问题开始</h2>
+        <div class="note">
+          <strong>“我想做一个 3 × 3 × 20 mm 的烧红铁块，分析它随时间的温度变化。”</strong>
+          <p>在任务页保留已知尺寸，审阅初温、环境温度、材料属性、对流和辐射条件。通过预检并授权运行后，在模型页查看网格，在结果页查看温度场，在证据页查看审核记录。</p>
+        </div>
+        <p>“烧红”需要在计划中明确为数值温度。换热和辐射参数也要按具体工况确认，实际结果只适用于该次审核过的模型条件。</p>
+      </section>
+
+      <section id="verification">
+        <p class="chapter">03 / 验证记录</p>
+        <h2 id="verified">本次做了哪些验证</h2>
+        <dl>
+          <dt>COMSOL 6.3 三维瞬态冷却</dt>
+          <dd>一个获授权的 RUN 完成四次内部求解及 16 项独立物理检查。1366 × 768 和 1440 × 900 两档原生窗口均显示了已审核的最终温度场。</dd>
+          <dt>Windows 桌面</dt>
+          <dd>在具备可用 WebView2 的 Windows 上，完成 3.1→4.0 升级、干净安装、原生启动、退出和卸载。卸载后核对项目数据库与配置。</dd>
+          <dt>禁网 Windows Sandbox</dt>
+          <dd>临时加载微软签名的固定版 WebView2 后，同一安装包完成安装、原生启动、Python 最小算例和卸载，算例输出 385。</dd>
+          <dt>代码回归</dt>
+          <dd>Python 2261 项通过，14 项既有跳过。前端 138 项、Rust 5 项通过，TypeScript 类型检查通过。</dd>
+        </dl>
+        <p>科学验收覆盖上述 COMSOL 6.3 热算例。沙箱最小算例验证桌面和本地脚本执行链。</p>
+      </section>
+
+      <section id="scope">
+        <p class="chapter">04 / 能力范围</p>
+        <h2>按具体引擎和模型判断</h2>
+        <p>三维温度场实测使用 COMSOL 6.3。COMSOL 6.4 和其他科学引擎需按版本、模型与本机许可分别验收。外部智能体通信的验证使用本地模拟环境。</p>
+        <p>内置 Evergreen WebView2 在无现成运行时的 Windows 上仍需完成离线安装实测。</p>
+      </section>
+
+      <section id="get-version">
+        <p class="chapter">05 / 版本获取</p>
+        <h2 id="status">获取 SKY Workbench 4.0.0 源码</h2>
+        <div class="note"><strong>SKY Workbench 4.0.0 · 源码版</strong><p>本次公开提供源码和构建文档。Windows 安装包仅供内部部署和验收。</p></div>
+        <p><a href="https://github.com/lovesky514514-cmd/sky-workbench/tree/main" target="_blank" rel="noopener noreferrer">查看软件源码</a>，或阅读<a href="https://github.com/lovesky514514-cmd/sky-workbench/blob/main/BUILDING.md" target="_blank" rel="noopener noreferrer">从源码构建</a>。此前更新与验收见 <a href="../3.1/">3.1 版本更新</a>。</p>
+      </section>
+      <nav class="docs-next" aria-label="章节导航"><a href="../../docs/">阅读使用文档 →</a><a href="../../">返回产品首页 →</a></nav>
+    </main>
+    <aside class="docs-toc" aria-label="本页目录"><p>本页目录</p><a href="#updates">版本更新</a><a href="#verification">验证记录</a><a href="#scope">能力范围</a><a href="#get-version">获取版本</a></aside>
+  </div>
+  <footer class="site-footer docs-footer"><span>SKY Workbench · Independent third-party software</span><span>SuKoYa · <a href="mailto:swbtest001@yeah.net">swbtest001@yeah.net</a></span></footer>
 </body>
 </html>
