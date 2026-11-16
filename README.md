@@ -2,11 +2,11 @@
 
 # SKY Workbench 官方网站与文档中心
 
-SKY Workbench 3.1 面向有限元、分子动力学、第一性原理与数学计算，将自然语言草案、候选参数审核、受控执行和结果证据放在同一工作空间。
+SKY Workbench 4.0 源码现已公开。4.0 支持科研总控、动态专家协作、受控执行和三维 Heat 证据查看。Windows 安装包仅供内部部署和验收。
 
 - [官方网站](https://lovesky514514-cmd.github.io/scientific-workbench-beta/)
 - [3.1 版本更新与验证记录](https://lovesky514514-cmd.github.io/scientific-workbench-beta/releases/3.1/)
-- [4.0 发布候选进展](https://lovesky514514-cmd.github.io/scientific-workbench-beta/releases/4.0/)
+- [4.0 源码版与实测范围](https://lovesky514514-cmd.github.io/scientific-workbench-beta/releases/4.0/)
 - [使用文档](https://lovesky514514-cmd.github.io/scientific-workbench-beta/docs/) · [知识库](https://lovesky514514-cmd.github.io/scientific-workbench-beta/knowledge-base/)
 - [软件源码](https://github.com/lovesky514514-cmd/sky-workbench) · [公开发行记录](https://github.com/lovesky514514-cmd/sky-workbench/releases)
 
@@ -27,6 +27,7 @@ SKY Workbench 3.1 面向有限元、分子动力学、第一性原理与数学�
 | `index.html` | 产品首页 |
 | `docs/index.html` | 3.1 使用文档 |
 | `releases/3.1/` | 更新说明与验证摘要 |
+| `releases/4.0/` | 4.0 源码版与实测范围 |
 | `knowledge-base/index.html` | 可搜索知识库 |
 | `assets/` | 站点样式、原始截图与轮播脚本 |
 

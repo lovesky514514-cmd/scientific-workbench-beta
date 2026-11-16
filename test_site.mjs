@@ -29,13 +29,16 @@ test('product and docs pages are self-contained and linked', () => {
   }
 })
 
-test('the 4.0 candidate keeps verified runs and installer availability explicit', () => {
-  assert.match(page('index.html'), /href="\.\/releases\/4\.0\/"/)
-  const candidate = page('releases/4.0/index.html')
-  assert.match(candidate, /公开 Windows 安装包待发布/)
-  assert.match(candidate, /固定版 WebView2/)
-  assert.match(candidate, /内置 Evergreen WebView2 仍需/)
-  assert.doesNotMatch(candidate, /href="[^"]+\.exe"/i)
+test('the 4.0 source release keeps verified runs and installer availability explicit', () => {
+  const home = page('index.html')
+  assert.match(home, /class="button primary" href="\.\/releases\/4\.0\/"/)
+  assert.match(home, /4\.0\.0 源码已发布/)
+  const release = page('releases/4.0/index.html')
+  assert.match(release, /Windows 安装包仅供内部部署和验收/)
+  assert.match(release, /固定版 WebView2/)
+  assert.match(release, /内置 Evergreen WebView2.*仍需完成离线安装实测/)
+  assert.match(release, /href="https:\/\/github\.com\/lovesky514514-cmd\/sky-workbench\/blob\/main\/BUILDING\.md"/)
+  assert.doesNotMatch(release, /href="[^"]+\.exe"/i)
 })
 
 test('the staging site has no beta distribution or live-service entry point', () => {
@@ -49,15 +52,15 @@ test('the staging site has no beta distribution or live-service entry point', ()
   assert.doesNotMatch(page('docs/index.html'), /<script\b/i)
 })
 
-test('V3.1 product information preserves honest source and download links', () => {
+test('product and 3.1 documentation preserve source and release links', () => {
   const home = page('index.html')
   const docs = page('docs/index.html')
   const repository = 'https://github.com/lovesky514514-cmd/sky-workbench'
-  assert.match(home, /SKY Workbench V3\.1/)
+  assert.match(home, /SKY Workbench 4\.0/)
   assert.match(home, /class="button source" href="https:\/\/github\.com\/lovesky514514-cmd\/sky-workbench"/)
   assert.match(docs, /当前版本<strong>不提供通用的任意 MPH 导入后修改流程<\/strong>/)
   assert.match(docs, /「停止」结束当前 attempt，不是可继续的暂停/)
-  assert.match(docs, /当前版本为 <strong>SKY Workbench 3\.1\.0<\/strong>/)
+  assert.match(docs, /本文档对应 <strong>SKY Workbench 3\.1\.0<\/strong>/)
   assert.match(docs, /href="mailto:swbtest001@yeah\.net"/)
   assert.ok(home.includes(repository) && docs.includes(repository))
   assert.match(home + docs, /releases\/tag\/v3\.0\.0/)
@@ -89,7 +92,7 @@ test('hero rotates only unmodified installed-app screenshots, not a simulated mo
 })
 
 
-test('current product pages use 3.1 version wording and link the update notes', () => {
+test('public pages keep 3.1 history and link current 4.0 source notes', () => {
   for (const name of ['index.html', 'docs/index.html', 'releases/3.1/index.html', 'README.md']) {
     const content = page(name)
     assert.match(content, /3\.1/)
@@ -97,6 +100,7 @@ test('current product pages use 3.1 version wording and link the update notes', 
   }
   assert.match(page('index.html'), /href="\.\/releases\/3.1\/"/)
   assert.match(page('docs/index.html'), /href="\.\.\/releases\/3.1\/"/)
+  assert.match(page('docs/index.html'), /href="\.\.\/releases\/4\.0\/"/)
   assert.match(page('releases/3.1/index.html'), /href="\.\/verification\.json"/)
   assert.doesNotMatch(page('index.html') + page('docs/index.html'), /releases\/tag\/v3\.1\.0/)
 })
@@ -158,6 +162,6 @@ test('Windows 3.1 entry identifies the final installer and its verification file
   const notes = page('releases/3.1/index.html')
   assert.ok(notes.includes(installer.filename) && notes.includes(installer.sha256))
   assert.match(notes, /href="\.\/installer\.json"/)
-  assert.match(page('index.html'), /class="button primary" href="\.\/releases\/3.1\/#get-version"/)
+  assert.match(page('index.html'), /href="\.\/releases\/3\.1\/">查看 3\.1 历史版本/)
   assert.match(page('assets/site.css'), /\.checksum\{[^}]*overflow-wrap:anywhere/)
 })
